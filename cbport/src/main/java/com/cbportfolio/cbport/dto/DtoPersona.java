@@ -1,11 +1,20 @@
 package com.cbportfolio.cbport.dto;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Setter @Getter
+@Builder
+//alt + insert p constructor    
+@NoArgsConstructor(access = AccessLevel.PACKAGE)
+@AllArgsConstructor(access = AccessLevel.PACKAGE)
 public class DtoPersona {
     
+    private Long idPersona;
     private String nombre;
     private String apellido;
     private String especialidad1;
@@ -15,23 +24,6 @@ public class DtoPersona {
     private String imagen;
     private String telefono;
     private String email;
-
-    public DtoPersona() {
-    }
-
-    public DtoPersona(String nombre, String apellido, String especialidad1, String especialidad2, String sobreMi, String banner, String imagen, String telefono, String email) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.especialidad1 = especialidad1;
-        this.especialidad2 = especialidad2;
-        this.sobreMi = sobreMi;
-        this.banner = banner;
-        this.imagen = imagen;
-        this.telefono = telefono;
-        this.email = email;
-    }
-
-    
-    
-    
+    private String fechaNac;
+ 
 }

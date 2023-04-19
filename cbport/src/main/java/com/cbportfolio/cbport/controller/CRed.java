@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,42 +17,42 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/red") //localhost:8080/redes
-//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 public class CRed {
     
     @Autowired
     private SRed redServ;
        
-    @GetMapping ("/lista/redes")
+    @GetMapping ("/lista")
     @ResponseBody
-    public List<Red> verRedes (){
+    public List<Red> list (){
        // return listaRedes;
-       return redServ.verRedes();
+       return redServ.list();
     }
     
-    @GetMapping ("/buscar/{id}")
+    @GetMapping ("/detalle/{id}")
     @ResponseBody
-    public Red buscarRed (@PathVariable Long id){
-       return redServ.buscarRed(id);
+    public Red getById (@PathVariable Long id){
+       return redServ.getById(id);
     }
     
-    @PostMapping ("/crear/red")
-    public String crearRed (@RequestBody Red net){
+    @PostMapping ("/alta")
+    public String create (@RequestBody Red net){
         //listaRedes.add(net);
-        redServ.crearRed(net);
+        redServ.create(net);
         return "La red fue creada correctamente";
     }
     
-    @DeleteMapping ("/borrar/{id}")
-    public String borrarRed(@PathVariable Long id){
-        redServ.borrarRed(id);
+    @DeleteMapping ("/baja/{id}")
+    public String delete(@PathVariable Long id){
+        redServ.delete(id);
         return "La red fue borrada correctamente";
     }
     
-    @PostMapping ("/editar/red")
-    public String editarRed (@RequestBody Red net){
+    @PutMapping ("/edicion")
+    public String edit (@RequestBody Red net){
         //listaRedes.add(net);
-        redServ.editarRed(net);
+        redServ.edit(net);
         return "Los datos de la red se modificaron correctamente";
     }
 }

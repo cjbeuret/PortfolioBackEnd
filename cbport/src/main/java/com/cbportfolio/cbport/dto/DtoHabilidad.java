@@ -1,29 +1,28 @@
 
 package com.cbportfolio.cbport.dto;
 
-import com.cbportfolio.cbport.entity.Persona;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Setter @Getter
 @Builder
+@NoArgsConstructor(access = AccessLevel.PACKAGE)
+@AllArgsConstructor(access = AccessLevel.PACKAGE)
 public class DtoHabilidad {
+    
+    private Long idHabilidad;
     private Long id;
     private String imagen;
     private String nombreHab;
     private Double porcentaje;
-    private Persona pers; //o persona_id?
-
-    /*public DtoHabilidad() {
-    }
-
-    public DtoHabilidad(String imagen, String nombreHab, Double porcentaje, Persona pers) {
-        this.imagen = imagen;
-        this.nombreHab = nombreHab;
-        this.porcentaje = porcentaje;
-        this.pers = pers;
-    }*/
+    //private Persona pers;
+    private Long idPersona; //esto no sé si va
+    
+    
     
     
 }

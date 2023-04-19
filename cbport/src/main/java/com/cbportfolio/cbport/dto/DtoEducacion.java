@@ -1,35 +1,28 @@
 package com.cbportfolio.cbport.dto;
 
-import com.cbportfolio.cbport.entity.Persona;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
 @Setter @Getter
+@Builder
+@NoArgsConstructor(access = AccessLevel.PACKAGE)
+@AllArgsConstructor(access = AccessLevel.PACKAGE)
 public class DtoEducacion {
     
+    private Long idEducacion;
     private String institucion;
     private String logo;
     private String url;
     private String titulo;
     private String alcanceTitulo;
     private String comentario;
-    private Persona pers;
-    
-    public DtoEducacion() {
-    }
-
-    public DtoEducacion(String institucion, String logo, String url, String titulo, String alcanceTitulo, String comentario, Persona pers) {
-        this.institucion = institucion;
-        this.logo = logo;
-        this.url = url;
-        this.titulo = titulo;
-        this.alcanceTitulo = alcanceTitulo;
-        this.comentario = comentario;
-        this.pers = pers;
-    }
-
-   
+    //private Persona pers;
+    private Long idPersona; //esto no sé si va
     
     
 }

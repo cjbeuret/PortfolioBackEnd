@@ -8,10 +8,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
+@Builder
 @Entity
 public class Habilidad {
     @Id
@@ -28,23 +30,13 @@ public class Habilidad {
     
      //relacion con Persona
     @ManyToOne()
-    @JoinColumn(name="persona_id")//anotation p ponerle otro nombre a la columna en la BD
+    @JoinColumn(name="personaid")//anotation p ponerle otro nombre a la columna en la BD
+    
     //creación de objeto    
     private Persona pers;
+    
+    private Long personaid; //esto no sé si va
 
-    public Habilidad() {
-    }
 
-    public Habilidad(String imagen, String altImage, String nombreHab, Double porcentaje, Persona pers) {
-        // en constructor lleno no va el id porque es autogenerado /identity
-        this.imagen = imagen;
-        //this.altImage = altImage;
-        this.nombreHab = nombreHab;
-        this.porcentaje = porcentaje;
-        this.pers = pers;
-    }
-
-   
- 
     
 }

@@ -9,10 +9,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter @Getter
+@Builder
 @Entity
 public class Domicilio {
     @Id
@@ -36,22 +38,11 @@ public class Domicilio {
     //@Column(name = "persona_id")esta debe cumplir misma funcion
     //para que se borre si borra persona
     //@OnDelete(action = OnDeleteAction.CASCADE)
+    
     //creación de objeto 
     private Persona pers;
-
-    public Domicilio() {
-    }
-
-    public Domicilio(String calle, String altura, String piso, String localidad, String provincia, String mapa, Persona pers) {
-        this.calle = calle;
-        this.altura = altura;
-        this.piso = piso;
-        this.localidad = localidad;
-        this.provincia = provincia;
-        this.mapa = mapa;
-        this.pers = pers;
-    }
     
-    
+    private Long personaid; //esto no sé si va
+
      
 }

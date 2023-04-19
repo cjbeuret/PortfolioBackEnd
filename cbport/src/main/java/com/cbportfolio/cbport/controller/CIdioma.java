@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,42 +17,42 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/idioma") //localhost:8080/idiomas
-//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 public class CIdioma {
     
     @Autowired
     private SIdioma idiomaServ;
        
-    @GetMapping ("/lista/idiomas")
+    @GetMapping ("/lista")
     @ResponseBody
-    public List<Idioma> verIdiomas (){
+    public List<Idioma> list (){
        // return listaIdiomas;
-       return idiomaServ.verIdiomas();
+       return idiomaServ.list();
     }
     
-    @GetMapping ("/buscar/{id}")
+    @GetMapping ("/detalle/{id}")
     @ResponseBody
-    public Idioma buscarIdioma (@PathVariable Long id){
-       return idiomaServ.buscarIdioma(id);
+    public Idioma getById (@PathVariable Long id){
+       return idiomaServ.getById(id);
     }
     
-    @PostMapping ("/crear/idioma")
-    public String crearIdioma (@RequestBody Idioma idiom){
+    @PostMapping ("/alta")
+    public String create (@RequestBody Idioma idiom){
         //listaIdiomas.add(idiom);
-        idiomaServ.crearIdioma(idiom);
+        idiomaServ.create(idiom);
         return "El idioma fue creado correctamente";
     }
     
-    @DeleteMapping ("/borrar/{id}")
-    public String borrarIdioma(@PathVariable Long id){
-        idiomaServ.borrarIdioma(id);
+    @DeleteMapping ("/baja/{id}")
+    public String delete(@PathVariable Long id){
+        idiomaServ.delete(id);
         return "El idioma fue borrado correctamente";
     }
     
-    @PostMapping ("/editar/idioma")
-    public String editarIdioma (@RequestBody Idioma idiom){
+    @PutMapping ("/edicion")
+    public String edit (@RequestBody Idioma idiom){
         //listaIdiomas.add(idiom);
-        idiomaServ.editarIdioma(idiom);
+        idiomaServ.edit(idiom);
         return "Los datos del idioma se modificaron correctamente";
     }
 }

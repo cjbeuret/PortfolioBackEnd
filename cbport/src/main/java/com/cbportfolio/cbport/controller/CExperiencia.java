@@ -1,7 +1,8 @@
 package com.cbportfolio.cbport.controller;
 
+import com.cbportfolio.cbport.dto.DtoExperiencia;
 import com.cbportfolio.cbport.entity.Experiencia;
-import com.cbportfolio.cbport.service.SExperiencia;
+import com.cbportfolio.cbport.service.IExperienciaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,42 +18,51 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/experiencia") //localhost:8080/experiencias
-//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 public class CExperiencia {
     
     @Autowired
-    private SExperiencia expeServ;
-       
-    @GetMapping ("/lista/experiencias")
+    private IExperienciaService expeServ;
+    
+    @GetMapping ("/lista")
     @ResponseBody
-    public List<Experiencia> verExperiencias (){
+    public List<DtoExperiencia> list(){
        // return listaExperiencias;
-       return expeServ.verExperiencias();
+       return expeServ.listDto();
     }
-    
-    @GetMapping ("/buscar/{id}")
+       
+    @GetMapping ("/detalle/{id}") 
     @ResponseBody
-    public Experiencia buscarExperiencia (@PathVariable Long id){
-       return expeServ.buscarExperiencia(id);
+    public Experiencia getById(@PathVariable Long id){
+       return expeServ.getById(id);
     }
     
-    @PostMapping ("/crear/experiencia")
-    public String crearExperiencia (@RequestBody Experiencia expe){
+    @PostMapping ("/alta")
+    public String create(@RequestBody DtoExperiencia expe){
         //listaExperiencias.add(expe);
-        expeServ.crearExperiencia(expe);
+        expeServ.createDto(expe);
         return "La experiencia fue creada correctamente";
     }
     
-    @DeleteMapping ("/borrar/{id}")
-    public String borrarExperiencia(@PathVariable Long id){
-        expeServ.borrarExperiencia(id);
+    @DeleteMapping ("/baja/{id}")
+    public String delete(@PathVariable Long id){
+        expeServ.deleteDto(id);
         return "La experiencia fue borrada correctamente";
     }
     
-    @PostMapping ("/editar/experiencia")
-    public String editarExperiencia (@RequestBody Experiencia expe){
+    @PutMapping ("/edicion")
+    public String edit(@RequestBody DtoExperiencia expe){
         //listaExperiencias.add(expe);
-        expeServ.editarExperiencia(expe);
+        expeServ.editDto(expe);
         return "Los datos de la experiencia se modificaron correctamente";
     }
+    
+    /* este sería editar por id, pero no lo tenemos en el servicio ni su interfase, tampoco en FRONTEND
+
+    @PutMapping ("/editar/{id}")
+    public String editById (@PathVariable("id") Long id, Experiencia expe){
+        //listaExperiencias.add(expe);
+        expeServ.editById(expe);
+        return "Los datos de la experiencia se modificaron correctamente";
+      }*/
 }

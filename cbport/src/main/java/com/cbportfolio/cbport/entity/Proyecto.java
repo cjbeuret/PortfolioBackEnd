@@ -8,10 +8,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
+@Builder
 @Entity
 public class Proyecto {
     @Id
@@ -35,26 +37,10 @@ public class Proyecto {
     //relacion con Persona
     @ManyToOne()
     @JoinColumn(name="persona_id")//anotation p ponerle otro nombre a la columna en la BD
+    
     //creación de objeto    
     private Persona pers;
 
-    public Proyecto() {
-    }
-
-    public Proyecto(String tituloProyecto, String imagen, String altImage, String url, String destinatario, String descProyecto, String periodoDesarrollo, Persona pers) {
-        // en constructor lleno no va el id porque es autogenerado /identity
-        this.tituloProyecto = tituloProyecto;
-        this.imagen = imagen;
-        //this.altImage = altImage;
-        this.url = url;
-        this.destinatario = destinatario;
-        this.descProyecto = descProyecto;
-        this.periodoDesarrollo = periodoDesarrollo;
-        this.pers = pers;
-    }
-
-    
-   
-
+    private Long personaid; //esto no sé si va
     
 }

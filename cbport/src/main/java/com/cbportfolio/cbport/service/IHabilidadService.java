@@ -9,17 +9,15 @@ import java.util.List;
 public interface IHabilidadService {
     
     //Entidades
-    public List<Habilidad> verHabilidades();
-    public Habilidad buscarHabilidad(Long id);
-    public void crearHabilidad(Habilidad hab);
-    public void borrarHabilidad(Long id);
-    public void editarHabilidad(Habilidad hab);
-    
-    //DTOs
-    public List<DtoHabilidad> verDtoHabilidades();
-    public DtoHabilidad buscarDtoHabilidad(Long id);
-    public void crearDtoHabilidad(DtoHabilidad dtohab);
-    public void borrarDtoHabilidad(Long id);
-    public void editarDtoHabilidad(DtoHabilidad dtohab);
-
+    public List<Habilidad> list();
+    public Habilidad getById(Long id);
+    public void create(Habilidad habnew);
+    public void delete(Long id);
+    public void edit(Habilidad hab);
+      
+    // DTOs
+    public List<DtoHabilidad> listDto();
+    public void createDto(DtoHabilidad habdtonew);
+    public void deleteDto(Long id);
+    public void editDto(DtoHabilidad habdto);
 }

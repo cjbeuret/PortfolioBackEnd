@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,43 +18,43 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/domicilio") //localhost:8080/domicilio
-//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 public class CDomicilio {
     
     @Autowired
     private SDomicilio domicServ;
     //inyección de dependencia de la controladora con el service
     
-    @GetMapping ("/lista/domicilios")
+    @GetMapping ("/lista")
     @ResponseBody
-    public List<Domicilio> verDomicilios (){
+    public List<Domicilio> list (){
        // return listaDomicilios;
-       return domicServ.verDomicilios();
+       return domicServ.list();
     }
     
-    @GetMapping ("/buscar/{id}")
+    @GetMapping ("/detalle/{id}")
     @ResponseBody
-    public Domicilio buscarDomicilio (@PathVariable Long id){
-       return domicServ.buscarDomicilio(id);
+    public Domicilio getById (@PathVariable Long id){
+       return domicServ.getById(id);
     }
     
-    @PostMapping ("/crear/domicilio")
-    public String crearDomicilio (@RequestBody Domicilio domic){
+    @PostMapping ("/alta")
+    public String create (@RequestBody Domicilio domic){
         //listaDomicilios.add(domic);
-        domicServ.crearDomicilio(domic);
+        domicServ.create(domic);
         return "El domicilio fue creado correctamente";
     }
     
-    @DeleteMapping ("/borrar/{id}")
-    public String borrarDomicilio(@PathVariable Long id){
-        domicServ.borrarDomicilio(id);
+    @DeleteMapping ("/baja/{id}")
+    public String delete(@PathVariable Long id){
+        domicServ.delete(id);
         return "El domicilio fue borrado correctamente";
     }
     
-    @PostMapping ("/editar/domicilio")
-    public String editarDomicilio (@RequestBody Domicilio domic){
+    @PutMapping ("/edicion")
+    public String edit (@RequestBody Domicilio domic){
         //listaDomicilio.add(domic);
-        domicServ.editarDomicilio(domic);
+        domicServ.edit(domic);
         return "Los datos del domicilio se modificaron correctamente";
     }
     

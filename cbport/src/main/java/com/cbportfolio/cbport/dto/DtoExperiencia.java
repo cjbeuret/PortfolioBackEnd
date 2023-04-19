@@ -1,12 +1,20 @@
 
 package com.cbportfolio.cbport.dto;
 
-import com.cbportfolio.cbport.entity.Persona;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Setter @Getter
+@Builder
+@NoArgsConstructor(access = AccessLevel.PACKAGE)
+@AllArgsConstructor(access = AccessLevel.PACKAGE)
 public class DtoExperiencia {
+    
+    private Long idExperiencia;
     private String empresa;
     private String logo;
     private String url;
@@ -14,21 +22,10 @@ public class DtoExperiencia {
     private String descPuesto;
     private String inicio;
     private String fin;
-    private Persona pers;
+    //private Persona pers;
+    private Long idPersona; //esto no sé si va
 
-    public DtoExperiencia() {
-    }
-
-    public DtoExperiencia(String empresa, String logo, String url, String cargo, String descPuesto, String inicio, String fin, Persona pers) {
-        this.empresa = empresa;
-        this.logo = logo;
-        this.url = url;
-        this.cargo = cargo;
-        this.descPuesto = descPuesto;
-        this.inicio = inicio;
-        this.fin = fin;
-        this.pers = pers;
-    }
+    
     
     
 }

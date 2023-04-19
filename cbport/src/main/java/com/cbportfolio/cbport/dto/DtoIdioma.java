@@ -1,26 +1,25 @@
 
 package com.cbportfolio.cbport.dto;
 
-import com.cbportfolio.cbport.entity.Persona;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Setter @Getter
+@Builder
+@NoArgsConstructor(access = AccessLevel.PACKAGE)
+@AllArgsConstructor(access = AccessLevel.PACKAGE)
 public class DtoIdioma {
+    
+    private Long idIdioma;
     private String idioma;
     private Double porcentaje;
     private String comentario;
-    private Persona pers;
-
-    public DtoIdioma() {
-    }
-
-    public DtoIdioma(String idioma, Double porcentaje, String comentario, Persona pers) {
-        this.idioma = idioma;
-        this.porcentaje = porcentaje;
-        this.comentario = comentario;
-        this.pers = pers;
-    }
-    
+   //private Persona pers;
+    private Long idPersona; //esto no sé si va
+   
     
 }

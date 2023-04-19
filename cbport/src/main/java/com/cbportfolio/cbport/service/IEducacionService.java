@@ -1,16 +1,25 @@
 
 package com.cbportfolio.cbport.service;
 
+import com.cbportfolio.cbport.dto.DtoEducacion;
 import com.cbportfolio.cbport.entity.Educacion;
 import java.util.List;
 
 
 public interface IEducacionService {
     
-    public List<Educacion> verEducaciones();
-    public Educacion buscarEducacion(Long id);
-    public void crearEducacion(Educacion educ);
-    public void borrarEducacion(Long id);
-    public void editarEducacion(Educacion educ);
+    //entidades
+    public List<Educacion> list();
+    public Educacion getById(Long id);
+    public void create(Educacion educnew);
+    public void delete(Long id);
+    public void edit(Educacion educ);
+    
+    
+    // DTOs
+    public List<DtoEducacion> listDto();
+    public void createDto(DtoEducacion educdtonew);
+    public void deleteDto(Long id);
+    public void editDto(DtoEducacion educdto);
     
 }
