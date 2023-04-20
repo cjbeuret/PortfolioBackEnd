@@ -9,11 +9,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Setter @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Entity
 public class Domicilio {
@@ -42,7 +46,7 @@ public class Domicilio {
     //creación de objeto 
     private Persona pers;
     
-    private Long personaid; //esto no sé si va
+    //private Long personaid; esto no sé si va
 
      
 }

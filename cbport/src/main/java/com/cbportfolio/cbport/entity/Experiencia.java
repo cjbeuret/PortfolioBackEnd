@@ -8,11 +8,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Entity
 public class Experiencia {
@@ -44,20 +48,5 @@ public class Experiencia {
     
     //private Long personaid; esto no sé si va
 
-    public Experiencia() {
-    }
-
-    public Experiencia(Long id, String empresa, String logo, String url, String cargo, String descPuesto, String inicio, String fin, Persona pers) {
-        this.id = id;
-        this.empresa = empresa;
-        this.logo = logo;
-        this.url = url;
-        this.cargo = cargo;
-        this.descPuesto = descPuesto;
-        this.inicio = inicio;
-        this.fin = fin;
-        this.pers = pers;
-    }
-
-    
+       
 }

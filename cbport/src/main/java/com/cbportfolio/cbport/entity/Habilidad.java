@@ -8,11 +8,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Entity
 public class Habilidad {
@@ -35,7 +39,7 @@ public class Habilidad {
     //creación de objeto    
     private Persona pers;
     
-    private Long personaid; //esto no sé si va
+    //private Long personaid; esto no sé si va
 
 
     
