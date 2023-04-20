@@ -37,9 +37,9 @@ public class CIdioma {
     }
     
     @PostMapping ("/alta")
-    public String create (@RequestBody Idioma idiom){
+    public String create (@RequestBody Idioma idioma){
         //listaIdiomas.add(idiom);
-        idiomaServ.create(idiom);
+        idiomaServ.create(idioma);
         return "El idioma fue creado correctamente";
     }
     
@@ -50,9 +50,9 @@ public class CIdioma {
     }
     
     @PutMapping ("/edicion")
-    public String edit (@RequestBody Idioma idiom){
+    public String edit (@RequestBody Idioma idioma){
         //listaIdiomas.add(idiom);
-        idiomaServ.edit(idiom);
+        idiomaServ.edit(idioma);
         return "Los datos del idioma se modificaron correctamente";
     }
 }

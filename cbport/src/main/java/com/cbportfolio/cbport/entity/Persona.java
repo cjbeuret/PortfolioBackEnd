@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 //import java.util.Date;
 import java.util.List;
@@ -85,11 +86,9 @@ public class Persona {
     //@JoinColumn(name = "persona_id", referencedColumnName = "id")
     private List<Red> listaRedes;
     
-    /*@OneToOne (mappedBy="pers", fetch=FetchType.LAZY, CascadeType.PERSIST)
-      private Usuario username 
-      o 
-      private Login login 
-    //para cuando cree el usuario p el loggin*/
+    @OneToOne (mappedBy="pers", fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
+    //@JoinColumn(name = "persona_id", referencedColumnName = "id") 
+    private Usuario usuario;
     
 
 }

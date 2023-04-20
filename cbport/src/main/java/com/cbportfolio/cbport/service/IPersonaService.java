@@ -15,7 +15,7 @@ public interface IPersonaService {
     public void delete(Long id);
     public void edit(Persona per);
     
-// DTOs
+    // DTOs
     public List<DtoPersona> listDto();
     public void createDto(DtoPersona perdtonew);
     public void deleteDto(Long id);

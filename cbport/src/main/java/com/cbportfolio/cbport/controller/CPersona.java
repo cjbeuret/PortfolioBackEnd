@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/persona") //localhost:8080/personas
+@RequestMapping("/persona") //localhost:8080/persona
 @CrossOrigin(origins = "http://localhost:4200")
 //@CrossOrigin(origins = ("https://cjbfrontend.web.app", "http://localhost:4200")) estas se pueden poner juntas
 public class CPersona {
@@ -41,9 +41,9 @@ public class CPersona {
     
     
     @PostMapping ("/alta")
-    public String create (@RequestBody DtoPersona per){
+    public String create (@RequestBody DtoPersona persona){
         //listaPersonas.add(pers);
-        persoServ.createDto(per);
+        persoServ.createDto(persona);
         return "La persona fue creada correctamente";
     }
     
@@ -54,9 +54,9 @@ public class CPersona {
     }
     
     @PutMapping ("/edicion")
-    public String edit (@RequestBody DtoPersona per){
+    public String edit (@RequestBody DtoPersona persona){
         //listaPersonas.add(pers);
-        persoServ.editDto(per);
+        persoServ.editDto(persona);
         return "Los datos de la persona se modificaron correctamente";
     }
    

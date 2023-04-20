@@ -37,9 +37,9 @@ public class CHabilidad {
     }
     
     @PostMapping ("/alta")
-    public String create (@RequestBody Habilidad hab){
+    public String create (@RequestBody Habilidad habilidad){
         //listaHabilidades.add(hab);
-        habServ.create(hab);
+        habServ.create(habilidad);
         return "La habilidad fue creada correctamente";
     }
     
@@ -50,9 +50,9 @@ public class CHabilidad {
     }
     
     @PutMapping ("/edicion")
-    public String edit(@RequestBody Habilidad hab){
+    public String edit(@RequestBody Habilidad habilidad){
         //listaHabilidades.add(hab);
-        habServ.edit(hab);
+        habServ.edit(habilidad);
         return "Los datos de la habilidad se modificaron correctamente";
     }
 }

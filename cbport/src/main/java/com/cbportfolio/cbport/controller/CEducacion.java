@@ -38,9 +38,9 @@ public class CEducacion {
     }
     
     @PostMapping ("/alta")
-    public String create (@RequestBody Educacion educ){
+    public String create (@RequestBody Educacion educacion){
         //listaPersonas.add(pers);
-        educServ.create(educ);
+        educServ.create(educacion);
         return "La educacion fue creada correctamente";
     }
     
@@ -51,9 +51,9 @@ public class CEducacion {
     }
     
     @PutMapping ("/edicion")
-    public String edit (@RequestBody Educacion educ){
+    public String edit (@RequestBody Educacion educacion){
         //listaPersonas.add(pers);
-        educServ.edit(educ);
+        educServ.edit(educacion);
         return "Los datos de la educacion se modificaron correctamente";
     }
 }

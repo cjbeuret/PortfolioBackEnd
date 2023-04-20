@@ -1,4 +1,3 @@
-
 package com.cbportfolio.cbport.dto;
 
 import lombok.AccessLevel;
@@ -12,17 +11,13 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
-public class DtoExperiencia {
+public class DtoUsuario {
     
-    private Long idExperiencia;
-    private String empresa;
-    private String logo;
-    private String url;
-    private String cargo;
-    private String descPuesto;
-    private String inicio;
-    private String fin;
+    private Long idUsuario;
+    private String email;
+    private String password;
     //private Persona pers;
     private Long idPersona; //esto no sé si va
+
     
 }

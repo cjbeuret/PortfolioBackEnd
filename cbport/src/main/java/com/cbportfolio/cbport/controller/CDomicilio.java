@@ -39,9 +39,9 @@ public class CDomicilio {
     }
     
     @PostMapping ("/alta")
-    public String create (@RequestBody Domicilio domic){
+    public String create (@RequestBody Domicilio domicilio){
         //listaDomicilios.add(domic);
-        domicServ.create(domic);
+        domicServ.create(domicilio);
         return "El domicilio fue creado correctamente";
     }
     
@@ -52,9 +52,9 @@ public class CDomicilio {
     }
     
     @PutMapping ("/edicion")
-    public String edit (@RequestBody Domicilio domic){
+    public String edit (@RequestBody Domicilio domicilio){
         //listaDomicilio.add(domic);
-        domicServ.edit(domic);
+        domicServ.edit(domicilio);
         return "Los datos del domicilio se modificaron correctamente";
     }
     

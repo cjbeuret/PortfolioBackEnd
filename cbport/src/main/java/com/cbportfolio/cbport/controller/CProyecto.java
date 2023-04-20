@@ -37,9 +37,9 @@ public class CProyecto {
     }
     
     @PostMapping ("/alta")
-    public String create (@RequestBody Proyecto proy){
+    public String create (@RequestBody Proyecto proyecto){
         //listaProyecto.add(proy);
-        proyServ.create(proy);
+        proyServ.create(proyecto);
         return "El proyecto fue creado correctamente";
     }
     
@@ -50,9 +50,9 @@ public class CProyecto {
     }
     
     @PutMapping ("/edicion")
-    public String edit (@RequestBody Proyecto proy){
+    public String edit (@RequestBody Proyecto proyecto){
         //listaProyectos.add(proy);
-        proyServ.edit(proy);
+        proyServ.edit(proyecto);
         return "Los datos del proyecto se modificaron correctamente";
     }
     

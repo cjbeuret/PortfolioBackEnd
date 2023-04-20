@@ -37,9 +37,9 @@ public class CRed {
     }
     
     @PostMapping ("/alta")
-    public String create (@RequestBody Red net){
+    public String create (@RequestBody Red red){
         //listaRedes.add(net);
-        redServ.create(net);
+        redServ.create(red);
         return "La red fue creada correctamente";
     }
     
@@ -50,9 +50,9 @@ public class CRed {
     }
     
     @PutMapping ("/edicion")
-    public String edit (@RequestBody Red net){
+    public String edit (@RequestBody Red red){
         //listaRedes.add(net);
-        redServ.edit(net);
+        redServ.edit(red);
         return "Los datos de la red se modificaron correctamente";
     }
 }
