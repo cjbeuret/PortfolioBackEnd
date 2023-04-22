@@ -1,5 +1,6 @@
 package com.cbportfolio.cbport.controller;
 
+import com.cbportfolio.cbport.dto.DtoIdioma;
 import com.cbportfolio.cbport.entity.Idioma;
 import com.cbportfolio.cbport.service.SIdioma;
 import java.util.List;
@@ -25,9 +26,9 @@ public class CIdioma {
        
     @GetMapping ("/lista")
     @ResponseBody
-    public List<Idioma> list (){
+    public List<DtoIdioma> list (){
        // return listaIdiomas;
-       return idiomaServ.list();
+       return idiomaServ.listDto();
     }
     
     @GetMapping ("/detalle/{id}")
@@ -45,7 +46,7 @@ public class CIdioma {
     
     @DeleteMapping ("/baja/{id}")
     public String delete(@PathVariable Long id){
-        idiomaServ.delete(id);
+        idiomaServ.deleteDto(id);
         return "El idioma fue borrado correctamente";
     }
     

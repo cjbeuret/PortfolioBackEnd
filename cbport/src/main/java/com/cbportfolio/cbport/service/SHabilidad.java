@@ -1,6 +1,5 @@
 package com.cbportfolio.cbport.service;
 
-import com.cbportfolio.cbport.dto.DtoHabilidad;
 import com.cbportfolio.cbport.entity.Habilidad;
 import com.cbportfolio.cbport.dto.DtoHabilidad;
 import com.cbportfolio.cbport.repository.RHabilidad;
@@ -76,7 +75,7 @@ public class SHabilidad implements IHabilidadService{
                     .imagen(hab.getImagen())
                     .nombreHab(hab.getNombreHab())
                     .porcentaje(hab.getPorcentaje())
-                    .idPersona(hab.getPers().getId())
+                    //.idPersona(hab.getPers().getId())
                     .build();
             listahabdto.add(habdto); 
         }

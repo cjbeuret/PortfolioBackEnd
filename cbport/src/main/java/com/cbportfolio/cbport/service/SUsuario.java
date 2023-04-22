@@ -20,7 +20,6 @@ public class SUsuario implements IUsuarioService {
     @Autowired
     public SPersona persoServ;
     
-    
     //ENTIDADES
     
     @Override

@@ -81,7 +81,8 @@ public class SExperiencia implements IExperienciaService {
                     .descPuesto(expe.getDescPuesto())
                     .inicio(expe.getInicio())
                     .fin(expe.getFin())
-                    .idPersona(expe.getPers().getId())
+                    //.pers(persoServ.getById(expedtonew.getIdPersona()))
+                    //.idPersona(expe.getPers().getId())
                     .build();
             listaexpedto.add(expedto); 
         }

@@ -1,5 +1,6 @@
 package com.cbportfolio.cbport.controller;
 
+import com.cbportfolio.cbport.dto.DtoRed;
 import com.cbportfolio.cbport.entity.Red;
 import com.cbportfolio.cbport.service.SRed;
 import java.util.List;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/red") //localhost:8080/redes
+@RequestMapping("/red") //localhost:8080/red
 @CrossOrigin(origins = "http://localhost:4200")
 public class CRed {
     
@@ -25,9 +26,9 @@ public class CRed {
        
     @GetMapping ("/lista")
     @ResponseBody
-    public List<Red> list (){
+    public List<DtoRed> list (){
        // return listaRedes;
-       return redServ.list();
+       return redServ.listDto();
     }
     
     @GetMapping ("/detalle/{id}")
@@ -45,7 +46,7 @@ public class CRed {
     
     @DeleteMapping ("/baja/{id}")
     public String delete(@PathVariable Long id){
-        redServ.delete(id);
+        redServ.deleteDto(id);
         return "La red fue borrada correctamente";
     }
     

@@ -2,7 +2,7 @@ package com.cbportfolio.cbport.controller;
 
 import com.cbportfolio.cbport.dto.DtoPersona;
 import com.cbportfolio.cbport.entity.Persona;
-import com.cbportfolio.cbport.service.SPersona;
+import com.cbportfolio.cbport.service.IPersonaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,7 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class CPersona {
     
     @Autowired
-    private SPersona persoServ;
+    private IPersonaService persoServ; 
+    //private SPersona persoServ;
     //inyección de dependencia de la controladora con el service
     
     @GetMapping ("/lista")
@@ -39,13 +40,20 @@ public class CPersona {
        return persoServ.getById(id);
     }
     
-    
+     @PostMapping ("/alta")
+    public String create (@RequestBody Persona persona){
+        //listaPersonas.add(pers);
+        persoServ.create(persona);
+        return "La persona fue creada correctamente";
+    }
+    /*
     @PostMapping ("/alta")
     public String create (@RequestBody DtoPersona persona){
         //listaPersonas.add(pers);
         persoServ.createDto(persona);
         return "La persona fue creada correctamente";
     }
+    */
     
     @DeleteMapping ("/baja/{id}")
     public String delete(@PathVariable Long id){
@@ -53,11 +61,18 @@ public class CPersona {
         return "La persona fue borrada correctamente";
     }
     
+    
+    @PutMapping ("/edicion")
+    public String edit (@RequestBody Persona persona){
+        //listaPersonas.add(pers);
+        persoServ.edit(persona);
+        return "Los datos de la persona se modificaron correctamente";
+    }
+    /*
     @PutMapping ("/edicion")
     public String edit (@RequestBody DtoPersona persona){
         //listaPersonas.add(pers);
         persoServ.editDto(persona);
         return "Los datos de la persona se modificaron correctamente";
-    }
-   
+    }*/
 }

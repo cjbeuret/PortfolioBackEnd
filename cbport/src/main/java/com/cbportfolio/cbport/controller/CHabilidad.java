@@ -1,6 +1,8 @@
 package com.cbportfolio.cbport.controller;
 
+import com.cbportfolio.cbport.dto.DtoHabilidad;
 import com.cbportfolio.cbport.entity.Habilidad;
+import com.cbportfolio.cbport.service.IHabilidadService;
 import com.cbportfolio.cbport.service.SHabilidad;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,18 +18,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/habilidad") //localhost:8080/habilidades
+@RequestMapping("/habilidad") //localhost:8080/habilidad
 @CrossOrigin(origins = "http://localhost:4200")
 public class CHabilidad {
     
     @Autowired
-    private SHabilidad habServ;
+    private IHabilidadService habServ;//este pone Luisina
+    //private SHabilidad habServ;
        
     @GetMapping ("/lista")
     @ResponseBody
-    public List<Habilidad> list (){
+    public List<DtoHabilidad> list (){
        // return listaHabilidades;
-       return habServ.list();
+       return habServ.listDto();
     }   
     
     @GetMapping ("/detalle/{id}")
@@ -45,7 +48,7 @@ public class CHabilidad {
     
     @DeleteMapping ("/baja/{id}")
     public String delete(@PathVariable Long id){
-        habServ.delete(id);
+        habServ.deleteDto(id);
         return "La habilidad fue borrada correctamente";
     }
     

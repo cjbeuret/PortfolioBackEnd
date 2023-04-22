@@ -1,5 +1,6 @@
 package com.cbportfolio.cbport.controller;
 
+import com.cbportfolio.cbport.dto.DtoEducacion;
 import com.cbportfolio.cbport.entity.Educacion;
 import com.cbportfolio.cbport.service.SEducacion;
 import java.util.List;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/educacion") //localhost:8080/educaciones
+@RequestMapping("/educacion") //localhost:8080/educacion
 @CrossOrigin(origins = "http://localhost:4200")
 public class CEducacion {
     
@@ -26,9 +27,9 @@ public class CEducacion {
        
     @GetMapping ("/lista")
     @ResponseBody
-    public List<Educacion> list(){
+    public List<DtoEducacion> list(){
        // return listaPersonas;
-       return educServ.list();
+       return educServ.listDto();
     }
     
     @GetMapping ("/detalle/{id}")
@@ -46,7 +47,7 @@ public class CEducacion {
     
     @DeleteMapping ("/baja/{id}")
     public String delete(@PathVariable Long id){
-        educServ.delete(id);
+        educServ.deleteDto(id);
         return "La educacion fue borrada correctamente";
     }
     

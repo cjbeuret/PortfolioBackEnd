@@ -15,7 +15,6 @@ import lombok.Setter;
 public class DtoHabilidad {
     
     private Long idHabilidad;
-    private Long id;
     private String imagen;
     private String nombreHab;
     private Double porcentaje;

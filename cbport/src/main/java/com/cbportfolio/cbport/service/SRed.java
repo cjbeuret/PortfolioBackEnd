@@ -19,6 +19,7 @@ public class SRed implements IRedService{
     @Autowired
     public SPersona persoServ;
     
+    //ENTIDADES
     
     @Override
     public List<Red> list() {
@@ -59,10 +60,10 @@ public class SRed implements IRedService{
     
     @Override
     public List<DtoRed> listDto(){
-    // Lista Experiencias dsd DTO
+    // Lista Redes dsd DTO
         List<DtoRed> listareddto = new ArrayList<>();
         
-        // Lista Experiencias dsd Entidad
+        // Lista Redes dsd Entidad
         List<Red> listared= this.list();
         
         // Asigno valores de Entidad a DTO

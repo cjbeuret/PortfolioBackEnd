@@ -2,7 +2,7 @@ package com.cbportfolio.cbport.controller;
 
 import com.cbportfolio.cbport.dto.DtoUsuario;
 import com.cbportfolio.cbport.entity.Usuario;
-import com.cbportfolio.cbport.service.IUsuarioService;
+import com.cbportfolio.cbport.service.SUsuario;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/usuario") //localhost:8080/experiencias
+@RequestMapping("/usuario") //localhost:8080/usuario
 @CrossOrigin(origins = "http://localhost:4200")
 public class CUsuario {
    
     @Autowired
-    private IUsuarioService usuarioServ;
+    private SUsuario usuarioServ;
     
     @GetMapping ("/lista")
     @ResponseBody
@@ -38,9 +38,9 @@ public class CUsuario {
     }
     
     @PostMapping ("/alta")
-    public String create(@RequestBody DtoUsuario usuario){
+    public String create(@RequestBody Usuario usuario){
         //listaUsuarios.add(usuario);
-        usuarioServ.createDto(usuario);
+        usuarioServ.create(usuario);
         return "El usuario fue creado correctamente";
     }
     
@@ -51,9 +51,9 @@ public class CUsuario {
     }
     
     @PutMapping ("/edicion")
-    public String edit(@RequestBody DtoUsuario usuario){
+    public String edit(@RequestBody Usuario usuario){
         //listaExperiencias.add(expe);
-        usuarioServ.editDto(usuario);
+        usuarioServ.edit(usuario);
         return "Los datos del usuario se modificaron correctamente";
     }
     

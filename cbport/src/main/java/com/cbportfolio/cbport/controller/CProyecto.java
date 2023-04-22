@@ -1,5 +1,6 @@
 package com.cbportfolio.cbport.controller;
 
+import com.cbportfolio.cbport.dto.DtoProyecto;
 import com.cbportfolio.cbport.entity.Proyecto;
 import com.cbportfolio.cbport.service.SProyecto;
 import java.util.List;
@@ -25,9 +26,9 @@ public class CProyecto {
        
     @GetMapping ("/lista")
     @ResponseBody
-    public List<Proyecto> list(){
+    public List<DtoProyecto> list(){
        // return listaProyectos;
-       return proyServ.list();
+       return proyServ.listDto();
     }
     
     @GetMapping ("/detalle/{id}")
@@ -45,7 +46,7 @@ public class CProyecto {
     
     @DeleteMapping ("/baja/{id}")
     public String delete(@PathVariable Long id){
-        proyServ.delete(id);
+        proyServ.deleteDto(id);
         return "El proyecto fue borrado correctamente";
     }
     

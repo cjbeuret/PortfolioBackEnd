@@ -1,6 +1,7 @@
 
 package com.cbportfolio.cbport.controller;
 
+import com.cbportfolio.cbport.dto.DtoDomicilio;
 import com.cbportfolio.cbport.entity.Domicilio;
 import com.cbportfolio.cbport.service.SDomicilio;
 import java.util.List;
@@ -27,9 +28,9 @@ public class CDomicilio {
     
     @GetMapping ("/lista")
     @ResponseBody
-    public List<Domicilio> list (){
+    public List<DtoDomicilio> list (){
        // return listaDomicilios;
-       return domicServ.list();
+       return domicServ.listDto();
     }
     
     @GetMapping ("/detalle/{id}")
@@ -47,7 +48,7 @@ public class CDomicilio {
     
     @DeleteMapping ("/baja/{id}")
     public String delete(@PathVariable Long id){
-        domicServ.delete(id);
+        domicServ.deleteDto(id);
         return "El domicilio fue borrado correctamente";
     }
     

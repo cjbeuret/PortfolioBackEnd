@@ -79,7 +79,7 @@ public class SDomicilio implements IDomicilioService {
                     .localidad(domic.getLocalidad())
                     .provincia(domic.getProvincia())
                     .mapa(domic.getMapa())
-                    .idPersona(domic.getPers().getId())
+                    //.idPersona(domic.getPers().getId())
                     .build();
             listadomicdto.add(domicdto); 
         }

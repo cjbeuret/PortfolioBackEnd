@@ -29,7 +29,7 @@ public class Usuario {
     private String password;
     
     //relacion con Persona
-    @OneToOne
+    @OneToOne()
     @JoinColumn(name="persona_id")//anotation p ponerle otro nombre a la columna en la BD
     //creación de objeto   
     private Persona pers;

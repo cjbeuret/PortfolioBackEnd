@@ -78,7 +78,7 @@ public class SProyecto implements IProyectoService{
                     .destinatario(proy.getDestinatario())
                     .descProyecto(proy.getDescProyecto())
                     .periodoDesarrollo(proy.getPeriodoDesarrollo())
-                    .idPersona(proy.getPers().getId())
+                    //.idPersona(proy.getPers().getId())
                     .build();
             listaproydto.add(proydto); 
         }

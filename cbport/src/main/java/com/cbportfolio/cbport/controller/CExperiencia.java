@@ -17,12 +17,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/experiencia") //localhost:8080/experiencias
+@RequestMapping("/experiencia") //localhost:8080/experiencia
 @CrossOrigin(origins = "http://localhost:4200")
 public class CExperiencia {
     
     @Autowired
     private IExperienciaService expeServ;
+    //private SExperiencia expeServ;
     
     @GetMapping ("/lista")
     @ResponseBody
@@ -38,9 +39,9 @@ public class CExperiencia {
     }
     
     @PostMapping ("/alta")
-    public String create(@RequestBody DtoExperiencia experiencia){
+    public String create(@RequestBody Experiencia experiencia){
         //listaExperiencias.add(expe);
-        expeServ.createDto(experiencia);
+        expeServ.create(experiencia);
         return "La experiencia fue creada correctamente";
     }
     
@@ -51,18 +52,18 @@ public class CExperiencia {
     }
     
     @PutMapping ("/edicion")
-    public String edit(@RequestBody DtoExperiencia experiencia){
+    public String edit(@RequestBody Experiencia experiencia){
         //listaExperiencias.add(expe);
-        expeServ.editDto(experiencia);
+        expeServ.edit(experiencia);
         return "Los datos de la experiencia se modificaron correctamente";
     }
     
-    /* este sería editar por id, pero no lo tenemos en el servicio ni su interfase, tampoco en FRONTEND
+    // este sería editar por id, pero no lo tenemos en el servicio ni su interfase, tampoco en FRONTEND
 
-    @PutMapping ("/editar/{id}")
-    public String editById (@PathVariable("id") Long id, Experiencia expe){
+    /*@PutMapping ("/editar/{id}")
+    public String edit (@PathVariable("id") Long id, @RequestBody DtoExperiencia expedto){
         //listaExperiencias.add(expe);
-        expeServ.editById(expe);
+        expeServ.edit(expedto);
         return "Los datos de la experiencia se modificaron correctamente";
-      }*/
+     }*/
 }

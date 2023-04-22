@@ -75,7 +75,7 @@ public class SIdioma implements IIdiomaService{
                     .idioma(idioma.getIdioma())
                     .porcentaje(idioma.getPorcentaje())
                     .comentario(idioma.getComentario())
-                    .idPersona(idioma.getPers().getId())
+                    //.idPersona(idioma.getPers().getId())
                     .build();
             listaidiomadto.add(idiomadto); 
         }

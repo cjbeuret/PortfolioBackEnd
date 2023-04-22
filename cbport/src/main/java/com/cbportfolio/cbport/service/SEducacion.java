@@ -78,7 +78,7 @@ public class SEducacion implements IEducacionService {
                     .titulo(educ.getTitulo())
                     .alcanceTitulo(educ.getAlcanceTitulo())
                     .comentario(educ.getComentario())                    
-                    .idPersona(educ.getPers().getId())
+                    //.idPersona(educ.getPers().getId())
                     .build();
             listaeducdto.add(educdto); 
         }
