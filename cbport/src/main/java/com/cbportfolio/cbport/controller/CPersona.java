@@ -27,6 +27,12 @@ public class CPersona {
     //private SPersona persoServ;
     //inyección de dependencia de la controladora con el service
     
+    
+    @PostMapping ("autenticacion/login")
+    public Persona loginPersona (@RequestBody Persona pers){
+        return persoServ.loginPersona(pers.getEmail(), pers.getPassword());
+    }
+    
     @GetMapping ("/lista")
     @ResponseBody
     public List<DtoPersona> list (){
@@ -75,4 +81,11 @@ public class CPersona {
         persoServ.editDto(persona);
         return "Los datos de la persona se modificaron correctamente";
     }*/
+    
+    @PutMapping ("/edicion/{id}")
+    public String editById (@PathVariable("id") Long id, @RequestBody Persona persona){
+        persoServ.edit(persona);
+        return "Los datos de la experiencia se modificaron correctamente";
+    }
+    
 }

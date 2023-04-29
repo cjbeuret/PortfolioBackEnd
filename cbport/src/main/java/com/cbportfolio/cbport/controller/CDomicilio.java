@@ -59,4 +59,9 @@ public class CDomicilio {
         return "Los datos del domicilio se modificaron correctamente";
     }
     
+    @PutMapping ("/edicion/{id}")
+    public String editById (@PathVariable("id") Long id, @RequestBody Domicilio domicilio){
+        domicServ.edit(domicilio);
+        return "Los datos de la experiencia se modificaron correctamente";
+    }
 }

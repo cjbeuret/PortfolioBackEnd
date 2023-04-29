@@ -56,4 +56,10 @@ public class CRed {
         redServ.edit(red);
         return "Los datos de la red se modificaron correctamente";
     }
+    
+    @PutMapping ("/edicion/{id}")
+    public String editById (@PathVariable("id") Long id, @RequestBody Red red){
+        redServ.edit(red);
+        return "Los datos de la experiencia se modificaron correctamente";
+    }
 }

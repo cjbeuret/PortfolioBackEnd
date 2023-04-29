@@ -19,6 +19,6 @@ public class DtoRed {
     private String imagen; 
     private String url; 
     //private Persona pers;
-    private Long idPersona; //esto no sé si va
+    private Long personaId; //esto no sé si va
 
 }

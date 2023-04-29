@@ -22,6 +22,6 @@ public class DtoProyecto {
     private String descProyecto;
     private String periodoDesarrollo; 
     //private Persona pers;
-    private Long idPersona; //esto no sé si va
+    private Long personaId; //esto no sé si va
     
 }

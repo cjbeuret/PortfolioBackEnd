@@ -56,4 +56,10 @@ public class CIdioma {
         idiomaServ.edit(idioma);
         return "Los datos del idioma se modificaron correctamente";
     }
+    
+    @PutMapping ("/edicion/{id}")
+    public String editById (@PathVariable("id") Long id, @RequestBody Idioma idioma){
+        idiomaServ.edit(idioma);
+        return "Los datos de la experiencia se modificaron correctamente";
+    }
 }

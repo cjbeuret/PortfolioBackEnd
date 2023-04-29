@@ -76,6 +76,7 @@ public class SIdioma implements IIdiomaService{
                     .porcentaje(idioma.getPorcentaje())
                     .comentario(idioma.getComentario())
                     //.idPersona(idioma.getPers().getId())
+                    .personaId(idioma.getPersonaId())
                     .build();
             listaidiomadto.add(idiomadto); 
         }
@@ -92,8 +93,9 @@ public class SIdioma implements IIdiomaService{
                 .idioma(idiomadtonew.getIdioma())
                 .porcentaje(idiomadtonew.getPorcentaje())
                 .comentario(idiomadtonew.getComentario())
-                .pers(persoServ.getById(idiomadtonew.getIdPersona()))
-                /*.personaid(expedto.getPers().getId())*/
+                //.pers(persoServ.getById(idiomadtonew.getIdPersona()))
+                //.personaid(expedto.getPers().getId())
+                .personaId(idiomadtonew.getPersonaId())
                 .build();
         this.create(idiomanew);
     }
@@ -108,7 +110,8 @@ public class SIdioma implements IIdiomaService{
         idiomamod.setIdioma(idiomadto.getIdioma());
         idiomamod.setPorcentaje(idiomadto.getPorcentaje());
         idiomamod.setComentario(idiomadto.getComentario());
-                     
+        idiomamod.setPersonaId(idiomadto.getPersonaId()); // no sé si va   
+        
         // Lo cargo a BD
         this.edit(idiomamod);
         

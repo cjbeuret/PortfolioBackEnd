@@ -58,4 +58,10 @@ public class CHabilidad {
         habServ.edit(habilidad);
         return "Los datos de la habilidad se modificaron correctamente";
     }
+    
+    @PutMapping ("/edicion/{id}")
+    public String editById (@PathVariable("id") Long id, @RequestBody Habilidad habilidad){
+        habServ.edit(habilidad);
+        return "Los datos de la experiencia se modificaron correctamente";
+    }
 }

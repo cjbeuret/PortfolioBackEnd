@@ -19,7 +19,7 @@ public class DtoIdioma {
     private Double porcentaje;
     private String comentario;
    //private Persona pers;
-    private Long idPersona; //esto no sé si va
+    private Long personaId; //esto no sé si va
    
     
 }

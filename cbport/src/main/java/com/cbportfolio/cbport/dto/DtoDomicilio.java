@@ -22,7 +22,7 @@ public class DtoDomicilio {
     private String provincia;
     private String mapa;
     //private Persona pers;
-    private Long idPersona; //esto no sé si va
+    private Long personaId; //esto no sé si va
     
     
 }

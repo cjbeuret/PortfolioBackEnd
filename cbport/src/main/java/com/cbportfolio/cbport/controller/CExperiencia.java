@@ -60,10 +60,20 @@ public class CExperiencia {
     
     // este sería editar por id, pero no lo tenemos en el servicio ni su interfase, tampoco en FRONTEND
 
-    /*@PutMapping ("/editar/{id}")
-    public String edit (@PathVariable("id") Long id, @RequestBody DtoExperiencia expedto){
+    /*
+    @PutMapping ("/edicion/{id}")
+    public String editById (@PathVariable("id") Long id, @RequestBody DtoExperiencia expedto){
         //listaExperiencias.add(expe);
-        expeServ.edit(expedto);
+        expeServ.editDto(expedto);
         return "Los datos de la experiencia se modificaron correctamente";
-     }*/
+    }
+    */
+    
+    @PutMapping ("/edicion/{id}")
+    public String editById (@PathVariable("id") Long id, @RequestBody Experiencia expe){
+        expeServ.edit(expe);
+        return "Los datos de la experiencia se modificaron correctamente";
+    }
+    
 }
+

@@ -76,7 +76,8 @@ public class SRed implements IRedService{
                     .nombreRed(red.getNombreRed())
                     .imagen(red.getImagen())
                     .url(red.getUrl())
-                    .idPersona(red.getPers().getId())
+                    //.idPersona(red.getPers().getId())
+                    .personaId(red.getPersonaId())
                     .build();
             listareddto.add(reddto); 
         }
@@ -94,8 +95,9 @@ public class SRed implements IRedService{
                 .nombreRed(reddtonew.getNombreRed())
                 .imagen(reddtonew.getImagen())
                 .url(reddtonew.getUrl())
-                .pers(persoServ.getById(reddtonew.getIdPersona()))
-                /*.personaid(expedto.getPers().getId())*/
+                //.pers(persoServ.getById(reddtonew.getIdPersona()))
+                //.personaid(expedto.getPers().getId())*/
+                .personaId(reddtonew.getPersonaId())
                 .build();
         this.create(rednew);
     }
@@ -110,7 +112,8 @@ public class SRed implements IRedService{
         redmod.setNombreRed(reddto.getNombreRed());
         redmod.setImagen(reddto.getImagen());
         redmod.setUrl(reddto.getUrl());
-                    
+        redmod.setPersonaId(reddto.getPersonaId()); // no sé si va   
+        
         // Lo cargo a BD
         this.edit(redmod); 
     }

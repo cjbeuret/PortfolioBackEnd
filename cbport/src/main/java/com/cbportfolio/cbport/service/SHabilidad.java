@@ -76,6 +76,7 @@ public class SHabilidad implements IHabilidadService{
                     .nombreHab(hab.getNombreHab())
                     .porcentaje(hab.getPorcentaje())
                     //.idPersona(hab.getPers().getId())
+                    .personaId(hab.getPersonaId())
                     .build();
             listahabdto.add(habdto); 
         }
@@ -92,8 +93,9 @@ public class SHabilidad implements IHabilidadService{
                 .imagen(habdtonew.getImagen())
                 .nombreHab(habdtonew.getNombreHab())
                 .porcentaje(habdtonew.getPorcentaje())
-                .pers(persoServ.getById(habdtonew.getIdPersona()))
-                /*.personaid(expedto.getPers().getId())*/
+                //.pers(persoServ.getById(habdtonew.getIdPersona()))
+                //.personaid(expedto.getPers().getId())
+                .personaId(habdtonew.getPersonaId())
                 .build();
         this.create(habnew);
     }
@@ -109,7 +111,8 @@ public class SHabilidad implements IHabilidadService{
         habmod.setImagen(habdto.getImagen());
         habmod.setNombreHab(habdto.getNombreHab());
         habmod.setPorcentaje(habdto.getPorcentaje());
-                    
+        habmod.setPersonaId(habdto.getPersonaId()); // no sé si va   
+        
         // Lo cargo a BD
         this.edit(habmod);
         

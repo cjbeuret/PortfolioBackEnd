@@ -79,6 +79,7 @@ public class SEducacion implements IEducacionService {
                     .alcanceTitulo(educ.getAlcanceTitulo())
                     .comentario(educ.getComentario())                    
                     //.idPersona(educ.getPers().getId())
+                    .personaId(educ.getPersonaId())
                     .build();
             listaeducdto.add(educdto); 
         }
@@ -98,8 +99,9 @@ public class SEducacion implements IEducacionService {
                 .titulo(educdtonew.getTitulo())
                 .alcanceTitulo(educdtonew.getAlcanceTitulo())
                 .comentario(educdtonew.getComentario()) 
-                .pers(persoServ.getById(educdtonew.getIdPersona()))
-                /*.personaid(expedto.getPers().getId())*/
+                //.pers(persoServ.getById(educdtonew.getIdPersona()))
+                //.personaid(expedto.getPers().getId())
+                .personaId(educdtonew.getPersonaId())
                 .build();
         this.create(educnew);
     }
@@ -118,7 +120,8 @@ public class SEducacion implements IEducacionService {
         educmod.setTitulo(educdto.getTitulo());
         educmod.setAlcanceTitulo(educdto.getAlcanceTitulo());
         educmod.setComentario(educdto.getComentario());
-                    
+        educmod.setPersonaId(educdto.getPersonaId()); // no sé si va   
+        
         // Lo cargo a BD
         this.edit(educmod);
         

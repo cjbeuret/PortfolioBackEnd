@@ -80,6 +80,7 @@ public class SDomicilio implements IDomicilioService {
                     .provincia(domic.getProvincia())
                     .mapa(domic.getMapa())
                     //.idPersona(domic.getPers().getId())
+                    .personaId(domic.getPersonaId())
                     .build();
             listadomicdto.add(domicdto); 
         }
@@ -99,8 +100,9 @@ public class SDomicilio implements IDomicilioService {
                 .localidad(domicdtonew.getLocalidad())
                 .provincia(domicdtonew.getProvincia())
                 .mapa(domicdtonew.getMapa())
-                .pers(persoServ.getById(domicdtonew.getIdPersona()))
-                /*.personaid(expedto.getPers().getId())*/
+                //.pers(persoServ.getById(domicdtonew.getIdPersona()))
+                //.personaId(domicdtonew.getPers().getId())
+                .personaId(domicdtonew.getPersonaId())
                 .build();
         this.create(domicnew);
     }         
@@ -118,7 +120,7 @@ public class SDomicilio implements IDomicilioService {
         domicmod.setLocalidad(domicdto.getLocalidad());
         domicmod.setProvincia(domicdto.getProvincia());
         domicmod.setMapa(domicdto.getMapa());
-              
+        domicmod.setPersonaId(domicdto.getPersonaId()); // no sé si va     
         // Lo cargo a BD
         this.edit(domicmod);
         

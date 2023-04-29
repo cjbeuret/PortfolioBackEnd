@@ -79,6 +79,7 @@ public class SProyecto implements IProyectoService{
                     .descProyecto(proy.getDescProyecto())
                     .periodoDesarrollo(proy.getPeriodoDesarrollo())
                     //.idPersona(proy.getPers().getId())
+                    .personaId(proy.getPersonaId())
                     .build();
             listaproydto.add(proydto); 
         }
@@ -98,8 +99,9 @@ public class SProyecto implements IProyectoService{
                 .destinatario(proydtonew.getDestinatario())
                 .descProyecto(proydtonew.getDescProyecto())
                 .periodoDesarrollo(proydtonew.getPeriodoDesarrollo())
-                .pers(persoServ.getById(proydtonew.getIdPersona()))
-                /*.personaid(expedto.getPers().getId())*/
+                //.pers(persoServ.getById(proydtonew.getIdPersona()))
+                //.personaid(expedto.getPers().getId())
+                .personaId(proydtonew.getPersonaId())
                 .build();
         this.create(proynew);
     }              
@@ -117,7 +119,8 @@ public class SProyecto implements IProyectoService{
         proymod.setDestinatario(proydto.getDestinatario());
         proymod.setDescProyecto(proydto.getDescProyecto());
         proymod.setPeriodoDesarrollo(proydto.getPeriodoDesarrollo());
-               
+        proymod.setPersonaId(proydto.getPersonaId()); // no sé si va   
+        
         // Lo cargo a BD
         this.edit(proymod);
         

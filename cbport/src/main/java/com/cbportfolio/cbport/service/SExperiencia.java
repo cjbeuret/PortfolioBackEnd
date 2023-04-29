@@ -46,16 +46,17 @@ public class SExperiencia implements IExperienciaService {
     public void create(Experiencia expenew) {
         expeRepo.save(expenew);
     }
-
-    @Override
-    public void delete(Long id) {
-        expeRepo.deleteById(id);
-    }
     
     @Override
     public void edit(Experiencia expe) {
         expeRepo.save(expe);
     }
+    
+    @Override
+    public void delete(Long id) {
+        expeRepo.deleteById(id);
+    }
+    
 
     //DTOs
     
@@ -83,6 +84,7 @@ public class SExperiencia implements IExperienciaService {
                     .fin(expe.getFin())
                     //.pers(persoServ.getById(expedtonew.getIdPersona()))
                     //.idPersona(expe.getPers().getId())
+                    .personaId(expe.getPersonaId())
                     .build();
             listaexpedto.add(expedto); 
         }
@@ -103,8 +105,9 @@ public class SExperiencia implements IExperienciaService {
                 .descPuesto(expedtonew.getDescPuesto())
                 .inicio(expedtonew.getInicio())
                 .fin(expedtonew.getFin())
-                .pers(persoServ.getById(expedtonew.getIdPersona()))
-                /*.personaid(expedto.getPers().getId())*/
+                //.pers(persoServ.getById(expedtonew.getIdPersona()))
+                //.personaid(expedto.getPers().getId())
+                .personaId(expedtonew.getPersonaId())
                 .build();
         this.create(expenew);
     }
@@ -124,11 +127,12 @@ public class SExperiencia implements IExperienciaService {
         expemod.setDescPuesto(expedto.getDescPuesto());
         expemod.setInicio(expedto.getInicio());
         expemod.setFin(expedto.getFin());
-             
+        expemod.setPersonaId(expedto.getPersonaId()); // no sé si va   
+        
         // Lo cargo a BD
         this.edit(expemod);
         
-    }
+    }    
     
     @Override
     public void deleteDto(Long id){

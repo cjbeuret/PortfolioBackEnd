@@ -57,4 +57,10 @@ public class CEducacion {
         educServ.edit(educacion);
         return "Los datos de la educacion se modificaron correctamente";
     }
+    
+    @PutMapping ("/edicion/{id}")
+    public String editById (@PathVariable("id") Long id, @RequestBody Educacion educacion){
+        educServ.edit(educacion);
+        return "Los datos de la experiencia se modificaron correctamente";
+    }
 }

@@ -52,6 +52,18 @@ public class SPersona implements IPersonaService{
     public void edit(Persona per) {
         persoRepo.save(per);
     }
+    
+
+    @Override
+    public Persona loginPersona(String email, String password) {
+        List<Persona> listaPersonas = persoRepo.findByEmailAndPassword(email, password);
+        if(!listaPersonas.isEmpty())
+        {
+            return listaPersonas.get(0);
+        }
+        return null;
+     
+    }
 
      //DTOs
     
@@ -79,6 +91,7 @@ public class SPersona implements IPersonaService{
                     .imagen(per.getImagen())
                     .telefono(per.getTelefono())
                     .email(per.getEmail())
+                    .password(per.getPassword())
                     .fechaNac(per.getFechaNac())
                     .build();
             listaperdto.add(perdto); 
@@ -103,6 +116,7 @@ public class SPersona implements IPersonaService{
                 .imagen(perdtonew.getImagen())
                 .telefono(perdtonew.getTelefono())
                 .email(perdtonew.getEmail())
+                .password(perdtonew.getPassword())
                 .fechaNac(perdtonew.getFechaNac())
                 .build();
         this.create(pernew);
@@ -125,6 +139,7 @@ public class SPersona implements IPersonaService{
         permod.setImagen(perdto.getImagen());
         permod.setTelefono(perdto.getTelefono());
         permod.setEmail(perdto.getEmail());
+        permod.setPassword(perdto.getPassword());
         permod.setFechaNac(perdto.getFechaNac());
                      
         // Lo cargo a BD

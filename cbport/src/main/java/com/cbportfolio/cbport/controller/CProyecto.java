@@ -57,4 +57,9 @@ public class CProyecto {
         return "Los datos del proyecto se modificaron correctamente";
     }
     
+    @PutMapping ("/edicion/{id}")
+    public String editById (@PathVariable("id") Long id, @RequestBody Proyecto proyecto){
+        proyServ.edit(proyecto);
+        return "Los datos de la experiencia se modificaron correctamente";
+    }
 }

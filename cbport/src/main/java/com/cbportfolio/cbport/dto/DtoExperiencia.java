@@ -23,6 +23,6 @@ public class DtoExperiencia {
     private String inicio;
     private String fin;
     //private Persona pers;
-    private Long idPersona; //esto no sé si va
+    private Long personaId; //esto no sé si va
     
 }

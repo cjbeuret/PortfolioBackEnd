@@ -19,7 +19,7 @@ public class DtoHabilidad {
     private String nombreHab;
     private Double porcentaje;
     //private Persona pers;
-    private Long idPersona; //esto no sé si va
+    private Long personaId; //esto no sé si va
     
     
     
