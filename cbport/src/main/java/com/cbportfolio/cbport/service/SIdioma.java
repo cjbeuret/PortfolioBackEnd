@@ -74,6 +74,7 @@ public class SIdioma implements IIdiomaService{
                     .idIdioma(idioma.getId())
                     .idioma(idioma.getIdioma())
                     .porcentaje(idioma.getPorcentaje())
+                    .progreso(idioma.getProgreso())
                     .comentario(idioma.getComentario())
                     //.idPersona(idioma.getPers().getId())
                     .personaId(idioma.getPersonaId())
@@ -92,6 +93,7 @@ public class SIdioma implements IIdiomaService{
                 .id(idiomadtonew.getIdIdioma())
                 .idioma(idiomadtonew.getIdioma())
                 .porcentaje(idiomadtonew.getPorcentaje())
+                .progreso(idiomadtonew.getProgreso())
                 .comentario(idiomadtonew.getComentario())
                 //.pers(persoServ.getById(idiomadtonew.getIdPersona()))
                 //.personaid(expedto.getPers().getId())
@@ -109,6 +111,7 @@ public class SIdioma implements IIdiomaService{
         //Cargo los datos desde el DTO
         idiomamod.setIdioma(idiomadto.getIdioma());
         idiomamod.setPorcentaje(idiomadto.getPorcentaje());
+        idiomamod.setProgreso(idiomadto.getProgreso());
         idiomamod.setComentario(idiomadto.getComentario());
         idiomamod.setPersonaId(idiomadto.getPersonaId()); // no sé si va   
         

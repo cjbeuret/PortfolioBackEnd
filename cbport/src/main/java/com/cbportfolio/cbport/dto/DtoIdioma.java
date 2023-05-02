@@ -17,6 +17,7 @@ public class DtoIdioma {
     private Long idIdioma;
     private String idioma;
     private Double porcentaje;
+    private String progreso;
     private String comentario;
    //private Persona pers;
     private Long personaId; //esto no sé si va

@@ -24,13 +24,15 @@ public class Habilidad {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column (length=1000)
-    private String imagen;
+    private String span;
     /*@Basic
     private String altImage; esto va? */
     @Column (name="habilidad", length=255)
     private String nombreHab;
     @Basic
     private Double porcentaje;
+    @Basic
+    private String progreso;
     
     //relacion con Persona  
     //NO SÉ SI VA: private Persona pers; o private Long personaId;

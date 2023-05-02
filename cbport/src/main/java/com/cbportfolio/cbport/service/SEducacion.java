@@ -77,6 +77,7 @@ public class SEducacion implements IEducacionService {
                     .url(educ.getUrl())
                     .titulo(educ.getTitulo())
                     .alcanceTitulo(educ.getAlcanceTitulo())
+                    .fechaObt(educ.getFechaObt())
                     .comentario(educ.getComentario())                    
                     //.idPersona(educ.getPers().getId())
                     .personaId(educ.getPersonaId())
@@ -98,6 +99,7 @@ public class SEducacion implements IEducacionService {
                 .url(educdtonew.getUrl())
                 .titulo(educdtonew.getTitulo())
                 .alcanceTitulo(educdtonew.getAlcanceTitulo())
+                .fechaObt(educdtonew.getFechaObt())
                 .comentario(educdtonew.getComentario()) 
                 //.pers(persoServ.getById(educdtonew.getIdPersona()))
                 //.personaid(expedto.getPers().getId())
@@ -119,6 +121,7 @@ public class SEducacion implements IEducacionService {
         educmod.setUrl(educdto.getUrl());
         educmod.setTitulo(educdto.getTitulo());
         educmod.setAlcanceTitulo(educdto.getAlcanceTitulo());
+        educmod.setFechaObt(educdto.getFechaObt());
         educmod.setComentario(educdto.getComentario());
         educmod.setPersonaId(educdto.getPersonaId()); // no sé si va   
         

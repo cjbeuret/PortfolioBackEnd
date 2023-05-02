@@ -72,9 +72,10 @@ public class SHabilidad implements IHabilidadService{
             
             DtoHabilidad.builder()
                     .idHabilidad(hab.getId())
-                    .imagen(hab.getImagen())
+                    .span(hab.getSpan())
                     .nombreHab(hab.getNombreHab())
                     .porcentaje(hab.getPorcentaje())
+                    .progreso(hab.getProgreso())
                     //.idPersona(hab.getPers().getId())
                     .personaId(hab.getPersonaId())
                     .build();
@@ -90,9 +91,10 @@ public class SHabilidad implements IHabilidadService{
                 
         Habilidad.builder()
                 .id(habdtonew.getIdHabilidad())                
-                .imagen(habdtonew.getImagen())
+                .span(habdtonew.getSpan())
                 .nombreHab(habdtonew.getNombreHab())
                 .porcentaje(habdtonew.getPorcentaje())
+                .progreso (habdtonew.getProgreso())
                 //.pers(persoServ.getById(habdtonew.getIdPersona()))
                 //.personaid(expedto.getPers().getId())
                 .personaId(habdtonew.getPersonaId())
@@ -108,9 +110,10 @@ public class SHabilidad implements IHabilidadService{
         Habilidad habmod=this.getById(habdto.getIdHabilidad());
                 
         //Cargo los datos desde el DTO
-        habmod.setImagen(habdto.getImagen());
+        habmod.setSpan(habdto.getSpan());
         habmod.setNombreHab(habdto.getNombreHab());
         habmod.setPorcentaje(habdto.getPorcentaje());
+        habmod.setProgreso(habdto.getProgreso());
         habmod.setPersonaId(habdto.getPersonaId()); // no sé si va   
         
         // Lo cargo a BD
@@ -135,9 +138,10 @@ public class SHabilidad implements IHabilidadService{
         for (Habilidad hab : listahab) {
             DtoHabilidad dto
                     = DtoHabilidad.builder()
-                            .imagen(hab.getImagen())
+                            .span(hab.getSpan())
                             .nombreHab(hab.getNombreHab())
                             .porcentaje(hab.getPorcentaje())
+                            .progreso (hab.getProgreso())
                             .pers(hab.getPers())
                             .build();
 
@@ -156,9 +160,10 @@ public class SHabilidad implements IHabilidadService{
               
         DtoHabilidad newhab=
                 DtoHabilidad.builder()
-                        .imagen(dtohab.getImagen())
+                        .sapn(dtohab.getSpan())
                         .nombreHab(dtohab.getNombreHab())
                         .porcentaje(dtohab.getPorcentaje())
+                        .progreso(dtohab.getProgreso())
                         .pers(dtohab.getPers())         
                     .build();
         this.crearDtoHabilidad(newhab);

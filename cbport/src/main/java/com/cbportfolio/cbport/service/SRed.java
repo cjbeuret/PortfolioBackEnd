@@ -74,7 +74,7 @@ public class SRed implements IRedService{
             DtoRed.builder()
                     .idRed(red.getId())
                     .nombreRed(red.getNombreRed())
-                    .imagen(red.getImagen())
+                    .span(red.getSpan())
                     .url(red.getUrl())
                     //.idPersona(red.getPers().getId())
                     .personaId(red.getPersonaId())
@@ -93,7 +93,7 @@ public class SRed implements IRedService{
         Red.builder()
                 .id(reddtonew.getIdRed())
                 .nombreRed(reddtonew.getNombreRed())
-                .imagen(reddtonew.getImagen())
+                .span(reddtonew.getSpan())
                 .url(reddtonew.getUrl())
                 //.pers(persoServ.getById(reddtonew.getIdPersona()))
                 //.personaid(expedto.getPers().getId())*/
@@ -110,7 +110,7 @@ public class SRed implements IRedService{
                 
         //Cargo los datos desde el DTO
         redmod.setNombreRed(reddto.getNombreRed());
-        redmod.setImagen(reddto.getImagen());
+        redmod.setSpan(reddto.getSpan());
         redmod.setUrl(reddto.getUrl());
         redmod.setPersonaId(reddto.getPersonaId()); // no sé si va   
         

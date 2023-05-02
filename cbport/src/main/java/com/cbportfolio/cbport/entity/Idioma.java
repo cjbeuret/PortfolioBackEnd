@@ -28,6 +28,8 @@ public class Idioma {
     @Basic
     private Double porcentaje;
     @Basic
+    private String progreso;
+    @Basic
     private String comentario;
     
     //relacion con Persona  

@@ -17,6 +17,19 @@ public class SPersona implements IPersonaService{
     public RPersona persoRepo; 
     //inyecta la dependencia del repo con el q vamos a trabajar
     
+    
+    @Override
+    public Persona loginPersona(String email, String password) {
+        List<Persona> listaPersonas = persoRepo.findByEmailAndPassword(email, password);
+        if(!listaPersonas.isEmpty())
+        {
+            return listaPersonas.get(0);
+        }
+        return null;
+     
+    }
+
+    
     @Override
     public List<Persona> list() {
         return persoRepo.findAll();
@@ -53,18 +66,6 @@ public class SPersona implements IPersonaService{
         persoRepo.save(per);
     }
     
-
-    @Override
-    public Persona loginPersona(String email, String password) {
-        List<Persona> listaPersonas = persoRepo.findByEmailAndPassword(email, password);
-        if(!listaPersonas.isEmpty())
-        {
-            return listaPersonas.get(0);
-        }
-        return null;
-     
-    }
-
      //DTOs
     
     @Override

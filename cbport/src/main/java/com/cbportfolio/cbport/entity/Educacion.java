@@ -34,6 +34,8 @@ public class Educacion {
     @Column (length=1000)
     private String alcanceTitulo;
     @Basic
+    private String fechaObt;  
+    @Basic
     private String comentario;
     
     //relacion con Persona  

@@ -15,9 +15,10 @@ import lombok.Setter;
 public class DtoHabilidad {
     
     private Long idHabilidad;
-    private String imagen;
+    private String span;
     private String nombreHab;
     private Double porcentaje;
+    private String progreso;
     //private Persona pers;
     private Long personaId; //esto no sé si va
     

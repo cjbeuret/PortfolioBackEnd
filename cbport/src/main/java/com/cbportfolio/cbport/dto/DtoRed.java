@@ -16,7 +16,7 @@ public class DtoRed {
     
     private Long idRed;
     private String nombreRed;   
-    private String imagen; 
+    private String span; 
     private String url; 
     //private Persona pers;
     private Long personaId; //esto no sé si va

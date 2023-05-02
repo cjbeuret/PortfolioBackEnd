@@ -20,6 +20,7 @@ public class DtoEducacion {
     private String url;
     private String titulo;
     private String alcanceTitulo;
+    private String fechaObt;
     private String comentario;
     //private Persona pers;
     private Long personaId; //esto no sé si va

@@ -67,6 +67,7 @@ public class CExperiencia {
         expeServ.editDto(expedto);
         return "Los datos de la experiencia se modificaron correctamente";
     }
+    en principio parece
     */
     
     @PutMapping ("/edicion/{id}")

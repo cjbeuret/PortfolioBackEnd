@@ -26,7 +26,7 @@ public class Red {
     @Basic
     private String nombreRed;
     @Column (length=1000)
-    private String imagen;
+    private String span;
     //@Basic
     //private String altImage; esto va?
     @Column (length=1000)

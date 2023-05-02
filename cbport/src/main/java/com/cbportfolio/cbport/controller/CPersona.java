@@ -28,7 +28,7 @@ public class CPersona {
     //inyección de dependencia de la controladora con el service
     
     
-    @PostMapping ("autenticacion/login")
+    @PostMapping ("/login") //("/autenticacion/login")
     public Persona loginPersona (@RequestBody Persona pers){
         return persoServ.loginPersona(pers.getEmail(), pers.getPassword());
     }
@@ -46,7 +46,7 @@ public class CPersona {
        return persoServ.getById(id);
     }
     
-     @PostMapping ("/alta")
+    @PostMapping ("/alta")
     public String create (@RequestBody Persona persona){
         //listaPersonas.add(pers);
         persoServ.create(persona);
