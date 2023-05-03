@@ -2,7 +2,7 @@ package com.cbportfolio.cbport.controller;
 
 import com.cbportfolio.cbport.dto.DtoRed;
 import com.cbportfolio.cbport.entity.Red;
-import com.cbportfolio.cbport.service.SRed;
+import com.cbportfolio.cbport.service.IRedService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,7 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class CRed {
     
     @Autowired
-    private SRed redServ;
+    private IRedService redServ;
+    //private SRed redServ;
        
     @GetMapping ("/lista")
     @ResponseBody
@@ -31,16 +32,11 @@ public class CRed {
        return redServ.listDto();
     }
     
-    @GetMapping ("/detalle/{id}")
-    @ResponseBody
-    public Red getById (@PathVariable Long id){
-       return redServ.getById(id);
-    }
     
     @PostMapping ("/alta")
-    public String create (@RequestBody Red red){
+    public String create (@RequestBody DtoRed red){
         //listaRedes.add(net);
-        redServ.create(red);
+        redServ.createDto(red);
         return "La red fue creada correctamente";
     }
     
@@ -51,15 +47,28 @@ public class CRed {
     }
     
     @PutMapping ("/edicion")
-    public String edit (@RequestBody Red red){
+    public String edit (@RequestBody DtoRed red){
         //listaRedes.add(net);
-        redServ.edit(red);
+        redServ.editDto(red);
         return "Los datos de la red se modificaron correctamente";
     }
     
-    @PutMapping ("/edicion/{id}")
+    /*@PutMapping ("/edicion/{id}")
     public String editById (@PathVariable("id") Long id, @RequestBody Red red){
         redServ.edit(red);
         return "Los datos de la experiencia se modificaron correctamente";
+    }*/
+    
+    @GetMapping ("/detalle/{id}")
+    @ResponseBody
+    public DtoRed getByIdDto (@PathVariable Long id){
+       return redServ.getByIdDto(id);
     }
+    
+    /*
+    @GetMapping ("/detalle/{id}")
+    @ResponseBody
+    public Red getById (@PathVariable Long id){
+       return redServ.getById(id);
+    }*/
 }

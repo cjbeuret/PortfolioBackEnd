@@ -82,7 +82,7 @@ public class SPersona implements IPersonaService{
             DtoPersona perdto =
             
             DtoPersona.builder()
-                    .idPersona(per.getId())
+                    .id_persona(per.getId())
                     .nombre(per.getNombre())
                     .apellido(per.getApellido())
                     .especialidad1(per.getEspecialidad1())
@@ -107,7 +107,7 @@ public class SPersona implements IPersonaService{
         Persona pernew=
                 
         Persona.builder()
-                .id(perdtonew.getIdPersona())               
+                .id(perdtonew.getId_persona())               
                 .nombre(perdtonew.getNombre())
                 .apellido(perdtonew.getApellido())
                 .especialidad1(perdtonew.getEspecialidad1())
@@ -128,7 +128,7 @@ public class SPersona implements IPersonaService{
     public void editDto(DtoPersona perdto){
     
         //Busco la experiencia y la guardo en un objeto
-        Persona permod=this.getById(perdto.getIdPersona());
+        Persona permod=this.getById(perdto.getId_persona());
                 
         //Cargo los datos desde el DTO
         permod.setNombre(perdto.getNombre());
@@ -147,10 +147,49 @@ public class SPersona implements IPersonaService{
         this.edit(permod);
     }
     
+    @Override
+    public DtoPersona getByIdDto(Long id){
     
+    //Busco la experiencia y la guardo en un objeto
+        Persona persBuscada=this.getById(id);
+        
+     // Mapeo la experiencia a DtoExperiencia
+        DtoPersona persBuscadaDTO =
+             
+             DtoPersona.builder()
+                     .id_persona(persBuscada.getId())
+                     .nombre( persBuscada.getNombre())
+                     .apellido( persBuscada.getApellido())
+                     .especialidad1( persBuscada.getEspecialidad1())
+                     .especialidad2( persBuscada.getEspecialidad2())
+                     .sobreMi( persBuscada.getSobreMi())
+                     .banner( persBuscada.getBanner())
+                     .imagen( persBuscada.getImagen())
+                     .telefono( persBuscada.getTelefono())
+                     .email( persBuscada.getEmail())
+                     .password( persBuscada.getPassword())
+                     .fechaNac( persBuscada.getFechaNac())
+                  .build();
+    
+             return persBuscadaDTO;   
+     
+    }
+            
     @Override
     public void deleteDto(Long id){
     this.delete(id);
     }
-
+    
+   /*
+    @Override
+    public Persona loginPersonaDto(String email, String password) {
+        List<Persona> listaPersonasDto = persoRepo.findByEmailAndPassword(email, password);
+        if(!listaPersonasDto.isEmpty())
+        {
+            return listaPersonasDto.get(0);
+        }
+        return null;
+     
+    }
+*/
 }

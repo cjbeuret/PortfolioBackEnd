@@ -21,5 +21,6 @@ public interface IEducacionService {
     public void createDto(DtoEducacion educdtonew);
     public void deleteDto(Long id);
     public void editDto(DtoEducacion educdto);
+    public DtoEducacion getByIdDto(Long id);
     
 }

@@ -1,8 +1,9 @@
+
 package com.cbportfolio.cbport.controller;
 
-import com.cbportfolio.cbport.dto.DtoPersona;
-import com.cbportfolio.cbport.entity.Persona;
-import com.cbportfolio.cbport.service.IPersonaService;
+import com.cbportfolio.cbport.dto.DtoUsuario;
+import com.cbportfolio.cbport.entity.Usuario;
+import com.cbportfolio.cbport.service.IUsuarioService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,37 +18,37 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/persona") //localhost:8080/persona
+@RequestMapping("/usuario") //localhost:8080/usuario
 @CrossOrigin(origins = "http://localhost:4200")
 //@CrossOrigin(origins = ("https://cjbfrontend.web.app", "http://localhost:4200")) estas se pueden poner juntas
-public class CPersona {
+public class CUsuario {
     
     @Autowired
-    private IPersonaService persoServ; 
+    private IUsuarioService userServ; 
     //private SPersona persoServ;
     //inyección de dependencia de la controladora con el service
     
     
     @PostMapping ("/login") //("/autenticacion/login")
-    public Persona loginPersona (@RequestBody Persona pers){
-        return persoServ.loginPersona (pers.getEmail(), pers.getPassword());
+    public Usuario loginUsuario (@RequestBody DtoUsuario usuario){
+        return userServ.loginUsuario(usuario.getUsername(), usuario.getPassword());
     }
     
     
     @GetMapping ("/lista")
     @ResponseBody
-    public List<DtoPersona> list (){
+    public List<DtoUsuario> list (){
        // return listaPersonas;
-       return persoServ.listDto();
+       return userServ.listDto();
     }
     
     
     
     @PostMapping ("/alta")
-    public String create (@RequestBody DtoPersona persona){
+    public String create (@RequestBody DtoUsuario usuario){
         //listaPersonas.add(pers);
-        persoServ.createDto(persona);
-        return "La persona fue creada correctamente";
+        userServ.createDto(usuario);
+        return "El usuario fue creado correctamente";
     }
     /*
     @PostMapping ("/alta")
@@ -60,15 +61,15 @@ public class CPersona {
     
     @DeleteMapping ("/baja/{id}")
     public String delete(@PathVariable Long id){
-        persoServ.deleteDto(id);
-        return "La persona fue borrada correctamente";
+        userServ.deleteDto(id);
+        return "El usuario fue borrado correctamente";
     }
     
     
     @PutMapping ("/edicion")
-    public String edit (@RequestBody DtoPersona persona){
+    public String edit (@RequestBody DtoUsuario usuario){
         //listaPersonas.add(pers);
-        persoServ.editDto(persona);
+        userServ.editDto(usuario);
         return "Los datos de la persona se modificaron correctamente";
     }
     
@@ -80,14 +81,16 @@ public class CPersona {
     
     @GetMapping ("/detalle/{id}")
     @ResponseBody
-    public DtoPersona getByIdDto (@PathVariable Long id){
-       return persoServ.getByIdDto(id);
+    public DtoUsuario getByIdDto (@PathVariable Long id){
+       return userServ.getByIdDto(id);
     }
     
     /* @GetMapping ("/detalle/{id}")
     @ResponseBody
     public Persona getById (@PathVariable Long id){
-       return persoServ.getById(id);
+       return userServ.getById(id);
     }*/
+    
+    
     
 }

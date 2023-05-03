@@ -2,7 +2,7 @@ package com.cbportfolio.cbport.controller;
 
 import com.cbportfolio.cbport.dto.DtoEducacion;
 import com.cbportfolio.cbport.entity.Educacion;
-import com.cbportfolio.cbport.service.SEducacion;
+import com.cbportfolio.cbport.service.IEducacionService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,11 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/educacion") //localhost:8080/educacion
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200/")
 public class CEducacion {
     
     @Autowired
-    private SEducacion educServ;
+    private IEducacionService educServ;
+    //private SEducacion educServ;
     //inyección de dependencia de la controladora con el service
        
     @GetMapping ("/lista")
@@ -32,18 +33,13 @@ public class CEducacion {
        return educServ.listDto();
     }
     
-    @GetMapping ("/detalle/{id}")
-    @ResponseBody
-    public Educacion getById(@PathVariable Long id){
-       return educServ.getById(id);
-    }
-    
     @PostMapping ("/alta")
-    public String create (@RequestBody Educacion educacion){
+    public String create (@RequestBody DtoEducacion educacion){
         //listaPersonas.add(pers);
-        educServ.create(educacion);
+        educServ.createDto(educacion);
         return "La educacion fue creada correctamente";
     }
+    
     
     @DeleteMapping ("/baja/{id}")
     public String delete(@PathVariable Long id){
@@ -52,15 +48,28 @@ public class CEducacion {
     }
     
     @PutMapping ("/edicion")
-    public String edit (@RequestBody Educacion educacion){
+    public String edit (@RequestBody DtoEducacion educacion){
         //listaPersonas.add(pers);
-        educServ.edit(educacion);
+        educServ.editDto(educacion);
         return "Los datos de la educacion se modificaron correctamente";
     }
     
-    @PutMapping ("/edicion/{id}")
+    /*@PutMapping ("/edicion/{id}")
     public String editById (@PathVariable("id") Long id, @RequestBody Educacion educacion){
         educServ.edit(educacion);
         return "Los datos de la experiencia se modificaron correctamente";
+    }*/
+    
+    @GetMapping ("/detalle/{id}")
+    @ResponseBody
+    public DtoEducacion getByIdDto(@PathVariable Long id){
+       return educServ.getByIdDto(id);
     }
+    /*
+    @GetMapping ("/detalle/{id}")
+    @ResponseBody
+    public Educacion getById(@PathVariable Long id){
+       return educServ.getById(id);
+    }*/
+    
 }

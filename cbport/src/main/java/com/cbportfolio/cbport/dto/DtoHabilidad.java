@@ -14,13 +14,13 @@ import lombok.Setter;
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 public class DtoHabilidad {
     
-    private Long idHabilidad;
+    private Long id_habilidad;
     private String span;
     private String nombreHab;
     private Double porcentaje;
     private String progreso;
     //private Persona pers;
-    private Long personaId; //esto no sé si va
+    private Long id_persona; //esto no sé si va
     
     
     

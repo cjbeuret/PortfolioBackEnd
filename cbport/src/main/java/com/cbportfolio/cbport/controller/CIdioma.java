@@ -2,7 +2,7 @@ package com.cbportfolio.cbport.controller;
 
 import com.cbportfolio.cbport.dto.DtoIdioma;
 import com.cbportfolio.cbport.entity.Idioma;
-import com.cbportfolio.cbport.service.SIdioma;
+import com.cbportfolio.cbport.service.IIdiomaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,7 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class CIdioma {
     
     @Autowired
-    private SIdioma idiomaServ;
+    private IIdiomaService idiomaServ;
+    //private SIdioma idiomaServ;
        
     @GetMapping ("/lista")
     @ResponseBody
@@ -31,16 +32,10 @@ public class CIdioma {
        return idiomaServ.listDto();
     }
     
-    @GetMapping ("/detalle/{id}")
-    @ResponseBody
-    public Idioma getById (@PathVariable Long id){
-       return idiomaServ.getById(id);
-    }
-    
     @PostMapping ("/alta")
-    public String create (@RequestBody Idioma idioma){
+    public String create (@RequestBody DtoIdioma idioma){
         //listaIdiomas.add(idiom);
-        idiomaServ.create(idioma);
+        idiomaServ.createDto(idioma);
         return "El idioma fue creado correctamente";
     }
     
@@ -51,15 +46,27 @@ public class CIdioma {
     }
     
     @PutMapping ("/edicion")
-    public String edit (@RequestBody Idioma idioma){
+    public String edit (@RequestBody DtoIdioma idioma){
         //listaIdiomas.add(idiom);
-        idiomaServ.edit(idioma);
+        idiomaServ.editDto(idioma);
         return "Los datos del idioma se modificaron correctamente";
     }
     
-    @PutMapping ("/edicion/{id}")
+    /*@PutMapping ("/edicion/{id}")
     public String editById (@PathVariable("id") Long id, @RequestBody Idioma idioma){
         idiomaServ.edit(idioma);
         return "Los datos de la experiencia se modificaron correctamente";
+    }*/
+    
+    @GetMapping ("/detalle/{id}")
+    @ResponseBody
+    public DtoIdioma getByIdDto (@PathVariable Long id){
+       return idiomaServ.getByIdDto(id);
     }
+    
+    /*@GetMapping ("/detalle/{id}")
+    @ResponseBody
+    public Idioma getById (@PathVariable Long id){
+       return idiomaServ.getById(id);
+    }*/
 }

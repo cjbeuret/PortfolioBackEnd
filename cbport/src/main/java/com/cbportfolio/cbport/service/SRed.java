@@ -72,12 +72,12 @@ public class SRed implements IRedService{
             DtoRed reddto =
             
             DtoRed.builder()
-                    .idRed(red.getId())
+                    .id_red(red.getId())
                     .nombreRed(red.getNombreRed())
                     .span(red.getSpan())
                     .url(red.getUrl())
-                    //.idPersona(red.getPers().getId())
-                    .personaId(red.getPersonaId())
+                    .id_persona(red.getPers().getId())
+                    //.personaId(red.getPersonaId())
                     .build();
             listareddto.add(reddto); 
         }
@@ -91,13 +91,13 @@ public class SRed implements IRedService{
         Red rednew=
                 
         Red.builder()
-                .id(reddtonew.getIdRed())
+                //.id(reddtonew.getId_red())
                 .nombreRed(reddtonew.getNombreRed())
                 .span(reddtonew.getSpan())
                 .url(reddtonew.getUrl())
-                //.pers(persoServ.getById(reddtonew.getIdPersona()))
+                .pers(persoServ.getById(reddtonew.getId_persona()))
                 //.personaid(expedto.getPers().getId())*/
-                .personaId(reddtonew.getPersonaId())
+                //.id_persona(reddtonew.getId_persona())
                 .build();
         this.create(rednew);
     }
@@ -106,18 +106,38 @@ public class SRed implements IRedService{
     public void editDto(DtoRed reddto){
     
         //Busco la experiencia y la guardo en un objeto
-        Red redmod=this.getById(reddto.getIdRed());
+        Red redmod=this.getById(reddto.getId_red());
                 
         //Cargo los datos desde el DTO
         redmod.setNombreRed(reddto.getNombreRed());
         redmod.setSpan(reddto.getSpan());
         redmod.setUrl(reddto.getUrl());
-        redmod.setPersonaId(reddto.getPersonaId()); // no sé si va   
+        //redmod.setId_persona(reddto.getId_persona()); // no sé si va   
         
         // Lo cargo a BD
         this.edit(redmod); 
     }
     
+    @Override
+    public DtoRed getByIdDto(Long id){
+    
+    //Busco la experiencia y la guardo en un objeto
+        Red redBuscada=this.getById(id);
+        
+     // Mapeo la experiencia a DtoExperiencia
+        DtoRed redBuscadaDTO =
+             
+             DtoRed.builder()
+                     .id_red(redBuscada.getId())
+                     .nombreRed( redBuscada.getNombreRed())
+                     .span( redBuscada.getSpan())
+                     .url( redBuscada.getUrl())
+                     .id_persona( redBuscada.getPers().getId())
+                  .build();
+    
+             return redBuscadaDTO;   
+     
+    }
     
     @Override
     public void deleteDto(Long id){

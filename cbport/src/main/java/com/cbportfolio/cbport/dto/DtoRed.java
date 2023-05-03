@@ -14,11 +14,11 @@ import lombok.Setter;
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 public class DtoRed {
     
-    private Long idRed;
+    private Long id_red;
     private String nombreRed;   
     private String span; 
     private String url; 
     //private Persona pers;
-    private Long personaId; //esto no sé si va
+    private Long id_persona; //esto no sé si va
 
 }

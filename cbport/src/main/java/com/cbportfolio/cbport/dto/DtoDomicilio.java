@@ -14,7 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 public class DtoDomicilio {
     
-    private Long idDomicilio;
+    private Long id_domicilio;
     private String calle; 
     private String altura; 
     private String piso;
@@ -22,7 +22,7 @@ public class DtoDomicilio {
     private String provincia;
     private String mapa;
     //private Persona pers;
-    private Long personaId; //esto no sé si va
+    private Long id_persona; //esto no sé si va
     
     
 }

@@ -1,7 +1,9 @@
 package com.cbportfolio.cbport.service;
 
 import com.cbportfolio.cbport.dto.DtoEducacion;
+import com.cbportfolio.cbport.dto.DtoExperiencia;
 import com.cbportfolio.cbport.entity.Educacion;
+import com.cbportfolio.cbport.entity.Experiencia;
 import com.cbportfolio.cbport.repository.REducacion;
 import jakarta.transaction.Transactional;
 import java.util.ArrayList;
@@ -71,7 +73,7 @@ public class SEducacion implements IEducacionService {
             DtoEducacion educdto =
             
             DtoEducacion.builder()
-                    .idEducacion(educ.getId())
+                    .id_educacion(educ.getId())
                     .institucion(educ.getInstitucion())
                     .logo(educ.getLogo())
                     .url(educ.getUrl())
@@ -79,8 +81,8 @@ public class SEducacion implements IEducacionService {
                     .alcanceTitulo(educ.getAlcanceTitulo())
                     .fechaObt(educ.getFechaObt())
                     .comentario(educ.getComentario())                    
-                    //.idPersona(educ.getPers().getId())
-                    .personaId(educ.getPersonaId())
+                    .id_persona(educ.getPers().getId())
+                    //.personaId(educ.getPersonaId())              
                     .build();
             listaeducdto.add(educdto); 
         }
@@ -93,7 +95,7 @@ public class SEducacion implements IEducacionService {
         Educacion educnew=
                 
         Educacion.builder()
-                .id(educdtonew.getIdEducacion())
+                //.id(educdtonew.getId_educacion())
                 .institucion(educdtonew.getInstitucion())
                 .logo(educdtonew.getLogo())
                 .url(educdtonew.getUrl())
@@ -101,9 +103,9 @@ public class SEducacion implements IEducacionService {
                 .alcanceTitulo(educdtonew.getAlcanceTitulo())
                 .fechaObt(educdtonew.getFechaObt())
                 .comentario(educdtonew.getComentario()) 
-                //.pers(persoServ.getById(educdtonew.getIdPersona()))
+                .pers(persoServ.getById(educdtonew.getId_persona()))
                 //.personaid(expedto.getPers().getId())
-                .personaId(educdtonew.getPersonaId())
+                //.personaId(educdtonew.getPersonaId())
                 .build();
         this.create(educnew);
     }
@@ -113,7 +115,7 @@ public class SEducacion implements IEducacionService {
     public void editDto(DtoEducacion educdto){
     
         //Busco la experiencia y la guardo en un objeto
-        Educacion educmod=this.getById(educdto.getIdEducacion());
+        Educacion educmod=this.getById(educdto.getId_educacion());
                 
         //Cargo los datos desde el DTO
         educmod.setInstitucion(educdto.getInstitucion());
@@ -123,11 +125,36 @@ public class SEducacion implements IEducacionService {
         educmod.setAlcanceTitulo(educdto.getAlcanceTitulo());
         educmod.setFechaObt(educdto.getFechaObt());
         educmod.setComentario(educdto.getComentario());
-        educmod.setPersonaId(educdto.getPersonaId()); // no sé si va   
+        //educmod.setId_persona(educdto.getId_persona()); // no sé si va   
         
         // Lo cargo a BD
         this.edit(educmod);
         
+    }
+    
+    @Override
+    public DtoEducacion getByIdDto(Long id){
+    
+    //Busco la experiencia y la guardo en un objeto
+        Educacion educBuscada=this.getById(id);
+        
+     // Mapeo la experiencia a DtoExperiencia
+        DtoEducacion educBuscadaDTO =
+             
+             DtoEducacion.builder()
+                     .id_educacion(educBuscada.getId())
+                     .institucion(educBuscada.getInstitucion())
+                     .logo( educBuscada.getLogo())
+                     .url( educBuscada.getUrl())
+                     .titulo( educBuscada.getTitulo())
+                     .alcanceTitulo( educBuscada.getAlcanceTitulo())
+                     .fechaObt( educBuscada.getFechaObt())
+                     .comentario( educBuscada.getComentario())
+                     .id_persona( educBuscada.getPers().getId())
+                  .build();
+    
+             return educBuscadaDTO;   
+     
     }
     
     @Override

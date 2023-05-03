@@ -71,13 +71,13 @@ public class SIdioma implements IIdiomaService{
             DtoIdioma idiomadto =
             
             DtoIdioma.builder()
-                    .idIdioma(idioma.getId())
+                    .id_idioma(idioma.getId())
                     .idioma(idioma.getIdioma())
                     .porcentaje(idioma.getPorcentaje())
                     .progreso(idioma.getProgreso())
                     .comentario(idioma.getComentario())
-                    //.idPersona(idioma.getPers().getId())
-                    .personaId(idioma.getPersonaId())
+                    .id_persona(idioma.getPers().getId())
+                    //.personaId(idioma.getPersonaId())
                     .build();
             listaidiomadto.add(idiomadto); 
         }
@@ -90,14 +90,14 @@ public class SIdioma implements IIdiomaService{
         Idioma idiomanew=
                 
         Idioma.builder()
-                .id(idiomadtonew.getIdIdioma())
+                //.id(idiomadtonew.getId_idioma())
                 .idioma(idiomadtonew.getIdioma())
                 .porcentaje(idiomadtonew.getPorcentaje())
                 .progreso(idiomadtonew.getProgreso())
                 .comentario(idiomadtonew.getComentario())
-                //.pers(persoServ.getById(idiomadtonew.getIdPersona()))
+                .pers(persoServ.getById(idiomadtonew.getId_persona()))
                 //.personaid(expedto.getPers().getId())
-                .personaId(idiomadtonew.getPersonaId())
+                //.personaId(idiomadtonew.getPersonaId())
                 .build();
         this.create(idiomanew);
     }
@@ -106,18 +106,40 @@ public class SIdioma implements IIdiomaService{
     public void editDto(DtoIdioma idiomadto){
     
         //Busco la experiencia y la guardo en un objeto
-        Idioma idiomamod=this.getById(idiomadto.getIdIdioma());
+        Idioma idiomamod=this.getById(idiomadto.getId_idioma());
                 
         //Cargo los datos desde el DTO
         idiomamod.setIdioma(idiomadto.getIdioma());
         idiomamod.setPorcentaje(idiomadto.getPorcentaje());
         idiomamod.setProgreso(idiomadto.getProgreso());
         idiomamod.setComentario(idiomadto.getComentario());
-        idiomamod.setPersonaId(idiomadto.getPersonaId()); // no sé si va   
+        //idiomamod.setId_persona(idiomadto.getId_persona()); // no sé si va   
         
         // Lo cargo a BD
         this.edit(idiomamod);
         
+    }
+    
+    @Override
+    public DtoIdioma getByIdDto(Long id){
+    
+    //Busco la experiencia y la guardo en un objeto
+        Idioma idiomaBuscado=this.getById(id);
+        
+     // Mapeo la experiencia a DtoExperiencia
+        DtoIdioma idiomaBuscadoDTO =
+             
+             DtoIdioma.builder()
+                     .id_idioma(idiomaBuscado.getId())
+                     .idioma( idiomaBuscado.getIdioma())
+                     .porcentaje( idiomaBuscado.getPorcentaje())
+                     .progreso( idiomaBuscado.getProgreso())
+                     .comentario( idiomaBuscado.getComentario())
+                     .id_persona( idiomaBuscado.getPers().getId())
+                  .build();
+    
+             return idiomaBuscadoDTO;   
+     
     }
     
     @Override

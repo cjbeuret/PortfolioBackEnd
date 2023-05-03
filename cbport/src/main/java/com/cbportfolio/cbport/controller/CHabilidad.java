@@ -3,7 +3,6 @@ package com.cbportfolio.cbport.controller;
 import com.cbportfolio.cbport.dto.DtoHabilidad;
 import com.cbportfolio.cbport.entity.Habilidad;
 import com.cbportfolio.cbport.service.IHabilidadService;
-import com.cbportfolio.cbport.service.SHabilidad;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -33,16 +32,10 @@ public class CHabilidad {
        return habServ.listDto();
     }   
     
-    @GetMapping ("/detalle/{id}")
-    @ResponseBody
-    public Habilidad getById (@PathVariable Long id){
-       return habServ.getById(id);
-    }
-    
     @PostMapping ("/alta")
-    public String create (@RequestBody Habilidad habilidad){
+    public String create (@RequestBody DtoHabilidad habilidad){
         //listaHabilidades.add(hab);
-        habServ.create(habilidad);
+        habServ.createDto(habilidad);
         return "La habilidad fue creada correctamente";
     }
     
@@ -53,15 +46,28 @@ public class CHabilidad {
     }
     
     @PutMapping ("/edicion")
-    public String edit(@RequestBody Habilidad habilidad){
+    public String edit(@RequestBody DtoHabilidad habilidad){
         //listaHabilidades.add(hab);
-        habServ.edit(habilidad);
+        habServ.editDto(habilidad);
         return "Los datos de la habilidad se modificaron correctamente";
     }
     
-    @PutMapping ("/edicion/{id}")
+    /*@PutMapping ("/edicion/{id}")
     public String editById (@PathVariable("id") Long id, @RequestBody Habilidad habilidad){
         habServ.edit(habilidad);
         return "Los datos de la experiencia se modificaron correctamente";
+    }*/
+    
+    @GetMapping ("/detalle/{id}")
+    @ResponseBody
+    public DtoHabilidad getByIdDto (@PathVariable Long id){
+       return habServ.getByIdDto(id);
     }
+    
+    /*
+    @GetMapping ("/detalle/{id}")
+    @ResponseBody
+    public Habilidad getById (@PathVariable Long id){
+       return habServ.getById(id);
+    }*/
 }

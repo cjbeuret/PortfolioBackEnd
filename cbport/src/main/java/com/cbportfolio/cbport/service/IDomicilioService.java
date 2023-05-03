@@ -19,4 +19,5 @@ public interface IDomicilioService {
     public void createDto(DtoDomicilio domicdtonew);
     public void deleteDto(Long id);
     public void editDto(DtoDomicilio domicdto);
+    public DtoDomicilio getByIdDto(Long id);
 }

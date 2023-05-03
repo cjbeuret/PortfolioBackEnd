@@ -14,7 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 public class DtoPersona {
     
-    private Long idPersona;
+    private Long id_persona;
     private String nombre;
     private String apellido;
     private String especialidad1;

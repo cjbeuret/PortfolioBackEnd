@@ -21,5 +21,7 @@ public interface IPersonaService {
     public void createDto(DtoPersona perdtonew);
     public void deleteDto(Long id);
     public void editDto(DtoPersona perdto);
+    public DtoPersona getByIdDto(Long id);
+    //public DtoPersona loginPersonaDto(String email, String password);
     
 }

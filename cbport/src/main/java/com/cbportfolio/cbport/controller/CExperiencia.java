@@ -32,16 +32,10 @@ public class CExperiencia {
        return expeServ.listDto();
     }
        
-    @GetMapping ("/detalle/{id}") 
-    @ResponseBody
-    public Experiencia getById(@PathVariable Long id){
-       return expeServ.getById(id);
-    }
-    
     @PostMapping ("/alta")
-    public String create(@RequestBody Experiencia experiencia){
+    public String create(@RequestBody DtoExperiencia experiencia){
         //listaExperiencias.add(expe);
-        expeServ.create(experiencia);
+        expeServ.createDto(experiencia);
         return "La experiencia fue creada correctamente";
     }
     
@@ -52,14 +46,13 @@ public class CExperiencia {
     }
     
     @PutMapping ("/edicion")
-    public String edit(@RequestBody Experiencia experiencia){
+    public String edit(@RequestBody DtoExperiencia experiencia){
         //listaExperiencias.add(expe);
-        expeServ.edit(experiencia);
+        expeServ.editDto(experiencia);
         return "Los datos de la experiencia se modificaron correctamente";
     }
     
-    // este sería editar por id, pero no lo tenemos en el servicio ni su interfase, tampoco en FRONTEND
-
+     // este sería editar por id, pero no lo tenemos en el servicio ni su interfase, tampoco en FRONTEND
     /*
     @PutMapping ("/edicion/{id}")
     public String editById (@PathVariable("id") Long id, @RequestBody DtoExperiencia expedto){
@@ -68,13 +61,31 @@ public class CExperiencia {
         return "Los datos de la experiencia se modificaron correctamente";
     }
     en principio parece
-    */
+    */    
     
-    @PutMapping ("/edicion/{id}")
+     // para devolver datos de una experiencia por id
+    @GetMapping("/detalle/{id}")
+    @ResponseBody
+    public DtoExperiencia getByIdDto(@PathVariable Long id){
+        return expeServ.getByIdDto(id);
+    }
+    
+    /*@GetMapping ("/detalle/{id}") 
+    @ResponseBody
+    public Experiencia getById(@PathVariable Long id){
+       return expeServ.getById(id);
+    }*/
+    
+    
+   
+    
+    /* NO USAR
+    @PutMapping ("edicion/{id}")
     public String editById (@PathVariable("id") Long id, @RequestBody Experiencia expe){
         expeServ.edit(expe);
         return "Los datos de la experiencia se modificaron correctamente";
-    }
+    }*/
     
+   
 }
 

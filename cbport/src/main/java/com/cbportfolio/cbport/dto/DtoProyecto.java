@@ -14,7 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 public class DtoProyecto {
     
-    private Long idProyecto;
+    private Long id_proyecto;
     private String tituloProyecto;
     private String imagen; 
     private String url;
@@ -22,6 +22,6 @@ public class DtoProyecto {
     private String descProyecto;
     private String periodoDesarrollo; 
     //private Persona pers;
-    private Long personaId; //esto no sé si va
+    private Long id_persona; //esto no sé si va
     
 }

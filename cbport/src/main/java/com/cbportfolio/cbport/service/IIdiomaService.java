@@ -20,4 +20,5 @@ public interface IIdiomaService {
     public void createDto(DtoIdioma idiomadtonew);
     public void deleteDto(Long id);
     public void editDto(DtoIdioma idiomadto);
+    public DtoIdioma getByIdDto(Long id);
 }

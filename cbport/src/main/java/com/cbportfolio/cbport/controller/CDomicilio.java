@@ -3,7 +3,7 @@ package com.cbportfolio.cbport.controller;
 
 import com.cbportfolio.cbport.dto.DtoDomicilio;
 import com.cbportfolio.cbport.entity.Domicilio;
-import com.cbportfolio.cbport.service.SDomicilio;
+import com.cbportfolio.cbport.service.IDomicilioService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,7 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class CDomicilio {
     
     @Autowired
-    private SDomicilio domicServ;
+    private IDomicilioService domicServ;
+    //private SDomicilio domicServ;
     //inyección de dependencia de la controladora con el service
     
     @GetMapping ("/lista")
@@ -33,18 +34,13 @@ public class CDomicilio {
        return domicServ.listDto();
     }
     
-    @GetMapping ("/detalle/{id}")
-    @ResponseBody
-    public Domicilio getById (@PathVariable Long id){
-       return domicServ.getById(id);
-    }
-    
     @PostMapping ("/alta")
-    public String create (@RequestBody Domicilio domicilio){
+    public String create (@RequestBody DtoDomicilio domicilio){
         //listaDomicilios.add(domic);
-        domicServ.create(domicilio);
+        domicServ.createDto(domicilio);
         return "El domicilio fue creado correctamente";
     }
+    
     
     @DeleteMapping ("/baja/{id}")
     public String delete(@PathVariable Long id){
@@ -53,15 +49,29 @@ public class CDomicilio {
     }
     
     @PutMapping ("/edicion")
-    public String edit (@RequestBody Domicilio domicilio){
+    public String edit (@RequestBody DtoDomicilio domicilio){
         //listaDomicilio.add(domic);
-        domicServ.edit(domicilio);
+        domicServ.editDto(domicilio);
         return "Los datos del domicilio se modificaron correctamente";
     }
-    
-    @PutMapping ("/edicion/{id}")
+        
+    /*@PutMapping ("/edicion/{id}")
     public String editById (@PathVariable("id") Long id, @RequestBody Domicilio domicilio){
         domicServ.edit(domicilio);
         return "Los datos de la experiencia se modificaron correctamente";
+    }*/
+    
+      // para devolver datos de una experiencia por id
+    @GetMapping("/detalle/{id}")
+    @ResponseBody
+    public DtoDomicilio getByIdDto(@PathVariable Long id){
+        return domicServ.getByIdDto(id);
     }
+    
+    /*@GetMapping ("/detalle/{id}")
+    @ResponseBody
+    public Domicilio getById (@PathVariable Long id){
+       return domicServ.getById(id);
+    }*/
+    
 }

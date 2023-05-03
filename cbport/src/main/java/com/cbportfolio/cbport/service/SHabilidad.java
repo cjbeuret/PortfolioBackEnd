@@ -71,13 +71,13 @@ public class SHabilidad implements IHabilidadService{
             DtoHabilidad habdto =
             
             DtoHabilidad.builder()
-                    .idHabilidad(hab.getId())
+                    .id_habilidad(hab.getId())
                     .span(hab.getSpan())
                     .nombreHab(hab.getNombreHab())
                     .porcentaje(hab.getPorcentaje())
                     .progreso(hab.getProgreso())
-                    //.idPersona(hab.getPers().getId())
-                    .personaId(hab.getPersonaId())
+                    .id_persona(hab.getPers().getId())
+                    //.personaId(hab.getPersonaId())
                     .build();
             listahabdto.add(habdto); 
         }
@@ -90,14 +90,14 @@ public class SHabilidad implements IHabilidadService{
         Habilidad habnew=
                 
         Habilidad.builder()
-                .id(habdtonew.getIdHabilidad())                
+                //.id(habdtonew.getId_habilidad())                
                 .span(habdtonew.getSpan())
                 .nombreHab(habdtonew.getNombreHab())
                 .porcentaje(habdtonew.getPorcentaje())
                 .progreso (habdtonew.getProgreso())
-                //.pers(persoServ.getById(habdtonew.getIdPersona()))
+                .pers(persoServ.getById(habdtonew.getId_persona()))
                 //.personaid(expedto.getPers().getId())
-                .personaId(habdtonew.getPersonaId())
+                //.personaId(habdtonew.getPersonaId())
                 .build();
         this.create(habnew);
     }
@@ -107,14 +107,14 @@ public class SHabilidad implements IHabilidadService{
     public void editDto(DtoHabilidad habdto){
     
         //Busco la experiencia y la guardo en un objeto
-        Habilidad habmod=this.getById(habdto.getIdHabilidad());
+        Habilidad habmod=this.getById(habdto.getId_habilidad());
                 
         //Cargo los datos desde el DTO
         habmod.setSpan(habdto.getSpan());
         habmod.setNombreHab(habdto.getNombreHab());
         habmod.setPorcentaje(habdto.getPorcentaje());
         habmod.setProgreso(habdto.getProgreso());
-        habmod.setPersonaId(habdto.getPersonaId()); // no sé si va   
+        //habmod.setId_Persona(habdto.getId_persona()); // no sé si va   
         
         // Lo cargo a BD
         this.edit(habmod);
@@ -122,9 +122,31 @@ public class SHabilidad implements IHabilidadService{
     }
     
     @Override
+    public DtoHabilidad getByIdDto(Long id){
+    
+    //Busco la experiencia y la guardo en un objeto
+        Habilidad habBuscada=this.getById(id);
+        
+     // Mapeo la experiencia a DtoExperiencia
+        DtoHabilidad habBuscadaDTO =
+             
+             DtoHabilidad.builder()
+                     .id_habilidad(habBuscada.getId())
+                     .span( habBuscada.getSpan())
+                     .nombreHab( habBuscada.getNombreHab())
+                     .porcentaje( habBuscada.getPorcentaje())
+                     .progreso( habBuscada.getProgreso())
+                     .id_persona( habBuscada.getPers().getId())
+                  .build();
+    
+             return habBuscadaDTO;   
+     
+    }
+    @Override
     public void deleteDto(Long id){
     this.delete(id);
     }
+    
     
     //METODOS DTOs
     

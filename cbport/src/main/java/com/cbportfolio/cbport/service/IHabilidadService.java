@@ -20,4 +20,5 @@ public interface IHabilidadService {
     public void createDto(DtoHabilidad habdtonew);
     public void deleteDto(Long id);
     public void editDto(DtoHabilidad habdto);
+    public DtoHabilidad getByIdDto(Long id);
 }

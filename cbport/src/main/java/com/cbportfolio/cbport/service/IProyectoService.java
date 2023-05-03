@@ -20,4 +20,5 @@ public interface IProyectoService {
     public void createDto(DtoProyecto proydtonew);
     public void deleteDto(Long id);
     public void editDto(DtoProyecto proydto);
+    public DtoProyecto getByIdDto(Long id);
 }

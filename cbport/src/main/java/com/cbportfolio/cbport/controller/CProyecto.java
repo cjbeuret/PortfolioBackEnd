@@ -2,7 +2,7 @@ package com.cbportfolio.cbport.controller;
 
 import com.cbportfolio.cbport.dto.DtoProyecto;
 import com.cbportfolio.cbport.entity.Proyecto;
-import com.cbportfolio.cbport.service.SProyecto;
+import com.cbportfolio.cbport.service.IProyectoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,7 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class CProyecto {
     
     @Autowired
-    private SProyecto proyServ;
+    private IProyectoService proyServ;
+    //private SProyecto proyServ;
        
     @GetMapping ("/lista")
     @ResponseBody
@@ -31,16 +32,12 @@ public class CProyecto {
        return proyServ.listDto();
     }
     
-    @GetMapping ("/detalle/{id}")
-    @ResponseBody
-    public Proyecto getById (@PathVariable Long id){
-       return proyServ.getById(id);
-    }
+    
     
     @PostMapping ("/alta")
-    public String create (@RequestBody Proyecto proyecto){
+    public String create (@RequestBody DtoProyecto proyecto){
         //listaProyecto.add(proy);
-        proyServ.create(proyecto);
+        proyServ.createDto(proyecto);
         return "El proyecto fue creado correctamente";
     }
     
@@ -51,15 +48,28 @@ public class CProyecto {
     }
     
     @PutMapping ("/edicion")
-    public String edit (@RequestBody Proyecto proyecto){
+    public String edit (@RequestBody DtoProyecto proyecto){
         //listaProyectos.add(proy);
-        proyServ.edit(proyecto);
+        proyServ.editDto(proyecto);
         return "Los datos del proyecto se modificaron correctamente";
     }
     
-    @PutMapping ("/edicion/{id}")
+    /*@PutMapping ("/edicion/{id}")
     public String editById (@PathVariable("id") Long id, @RequestBody Proyecto proyecto){
         proyServ.edit(proyecto);
         return "Los datos de la experiencia se modificaron correctamente";
+    }*/
+    
+    @GetMapping ("/detalle/{id}")
+    @ResponseBody
+    public DtoProyecto getByIdDto (@PathVariable Long id){
+       return proyServ.getByIdDto(id);
     }
+    
+    /*
+    @GetMapping ("/detalle/{id}")
+    @ResponseBody
+    public Proyecto getById (@PathVariable Long id){
+       return proyServ.getById(id);
+    }*/
 }

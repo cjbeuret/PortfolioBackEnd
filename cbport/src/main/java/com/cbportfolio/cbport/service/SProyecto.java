@@ -71,15 +71,15 @@ public class SProyecto implements IProyectoService{
             DtoProyecto proydto =
             
             DtoProyecto.builder()
-                    .idProyecto(proy.getId())
+                    .id_proyecto(proy.getId())
                     .tituloProyecto(proy.getTituloProyecto())
                     .imagen(proy.getImagen())
                     .url(proy.getUrl())
                     .destinatario(proy.getDestinatario())
                     .descProyecto(proy.getDescProyecto())
                     .periodoDesarrollo(proy.getPeriodoDesarrollo())
-                    //.idPersona(proy.getPers().getId())
-                    .personaId(proy.getPersonaId())
+                    .id_persona(proy.getPers().getId())
+                    //.personaId(proy.getPersonaId())
                     .build();
             listaproydto.add(proydto); 
         }
@@ -92,16 +92,16 @@ public class SProyecto implements IProyectoService{
         Proyecto proynew=
                 
         Proyecto.builder()
-                .id(proydtonew.getIdProyecto())
+                //.id(proydtonew.getId_proyecto())
                 .tituloProyecto(proydtonew.getTituloProyecto())
                 .imagen(proydtonew.getImagen())
                 .url(proydtonew.getUrl())
                 .destinatario(proydtonew.getDestinatario())
                 .descProyecto(proydtonew.getDescProyecto())
                 .periodoDesarrollo(proydtonew.getPeriodoDesarrollo())
-                //.pers(persoServ.getById(proydtonew.getIdPersona()))
+                .pers(persoServ.getById(proydtonew.getId_persona()))
                 //.personaid(expedto.getPers().getId())
-                .personaId(proydtonew.getPersonaId())
+                //.personaId(proydtonew.getPersonaId())
                 .build();
         this.create(proynew);
     }              
@@ -110,7 +110,7 @@ public class SProyecto implements IProyectoService{
     public void editDto(DtoProyecto proydto){
     
         //Busco la experiencia y la guardo en un objeto
-        Proyecto proymod=this.getById(proydto.getIdProyecto());
+        Proyecto proymod=this.getById(proydto.getId_proyecto());
                 
         //Cargo los datos desde el DTO
         proymod.setTituloProyecto(proydto.getTituloProyecto());
@@ -119,11 +119,35 @@ public class SProyecto implements IProyectoService{
         proymod.setDestinatario(proydto.getDestinatario());
         proymod.setDescProyecto(proydto.getDescProyecto());
         proymod.setPeriodoDesarrollo(proydto.getPeriodoDesarrollo());
-        proymod.setPersonaId(proydto.getPersonaId()); // no sé si va   
+        //proymod.setId_persona(proydto.getId_persona()); // no sé si va   
         
         // Lo cargo a BD
         this.edit(proymod);
         
+    }
+    
+    @Override
+    public DtoProyecto getByIdDto(Long id){
+    
+    //Busco la experiencia y la guardo en un objeto
+        Proyecto proyBuscado=this.getById(id);
+        
+     // Mapeo la experiencia a DtoExperiencia
+        DtoProyecto proyBuscadoDTO =
+             
+             DtoProyecto.builder()
+                     .id_proyecto(proyBuscado.getId())
+                     .tituloProyecto( proyBuscado.getTituloProyecto())
+                     .imagen( proyBuscado.getImagen())
+                     .url( proyBuscado.getUrl())
+                     .destinatario( proyBuscado.getDestinatario())
+                     .descProyecto( proyBuscado.getDescProyecto())
+                     .periodoDesarrollo( proyBuscado.getPeriodoDesarrollo())
+                     .id_persona( proyBuscado.getPers().getId())
+                  .build();
+    
+             return proyBuscadoDTO;   
+     
     }
     
     @Override

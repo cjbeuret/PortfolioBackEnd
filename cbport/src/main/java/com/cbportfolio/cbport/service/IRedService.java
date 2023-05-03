@@ -19,4 +19,5 @@ public interface IRedService {
     public void createDto(DtoRed netdtonew);
     public void deleteDto(Long id);
     public void editDto(DtoRed netdto);
+    public DtoRed getByIdDto(Long id);
 }

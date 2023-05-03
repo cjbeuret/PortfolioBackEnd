@@ -1,5 +1,6 @@
 package com.cbportfolio.cbport.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -9,8 +10,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import java.util.ArrayList;
 //import jakarta.persistence.OneToOne;
 
 //import java.util.Date;
@@ -56,56 +57,65 @@ public class Persona {
     /*@Temporal(TemporalType.DATE)
     @JsonFormat (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date fecha_Nac;*/
-    @Basic 
+    @Basic
     private String password;
     @Basic 
     private String fechaNac;
 
     //relaciones
-    
+       
     //@OneToMany(mappedBy="personaId", fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
     //@OneToMany(mappedBy="pers", fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @OneToMany(mappedBy="personaId")
+    @JsonIgnore
+    @OneToMany(mappedBy="pers")
     private List<Domicilio> listaDomicilios;
     
     //@OneToMany(mappedBy="personaId", fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
     //@OneToMany(mappedBy="pers", fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @OneToMany(mappedBy="personaId")
+    @JsonIgnore
+    @OneToMany(mappedBy="pers")
     private List<Experiencia> listaExperiencias;
     
     //@OneToMany(mappedBy="personaId", fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
-    //@OneToMany(mappedBy="pers", fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @OneToMany(mappedBy="personaId")
+    @JsonIgnore
+    @OneToMany(mappedBy="pers", fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
+    //@OneToMany(mappedBy="id_persona")
     private List<Educacion> listaEducacion;
     
     //@OneToMany(mappedBy="personaId", fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
-    //@OneToMany(mappedBy="pers", fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @OneToMany(mappedBy="personaId")
+    @JsonIgnore
+    @OneToMany(mappedBy="pers", fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
+    //@OneToMany(mappedBy="id_persona")
     private List<Proyecto> listaProyectos;
     
     //@OneToMany(mappedBy="personaId", fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
-    //@OneToMany(mappedBy="pers", fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @OneToMany(mappedBy="personaId")
+    @JsonIgnore
+    @OneToMany(mappedBy="pers", fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
+    //@OneToMany(mappedBy="id_persona")
     private List<Habilidad> listaHabilidades;
     
     //@OneToMany(mappedBy="personaId", fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
-    //@OneToMany(mappedBy="pers", fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @OneToMany(mappedBy="personaId")
+    @JsonIgnore
+    @OneToMany(mappedBy="pers", fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
+    //@OneToMany(mappedBy="id_persona")
     private List<Idioma> listaIdiomas;
     
     //@OneToMany(mappedBy="personaId", fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
-    //@OneToMany(mappedBy="pers", fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @OneToMany(mappedBy="personaId")
+    @JsonIgnore
+    @OneToMany(mappedBy="pers", fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
+    //@OneToMany(mappedBy="id_persona")
     private List<Red> listaRedes;
     
-    /*@OneToMany(mappedBy="personaId", fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)/
+    @JsonIgnore
+    @OneToOne(mappedBy="pers",fetch=FetchType.LAZY)
     //@OneToOne (mappedBy="pers", fetch=FetchType.LAZY, cascade = CascadeType.PERSIST) 
-    private Usuario usuario;*/
-
+    private Usuario username;
+    
+    
     public Persona() {
     }
 
-    public Persona(Long id, String nombre, String apellido, String especialidad1, String especialidad2, String sobreMi, String banner, String imagen, String telefono, String email, String password, String fechaNac, List<Domicilio> listaDomicilios, List<Experiencia> listaExperiencias, List<Educacion> listaEducacion, List<Proyecto> listaProyectos, List<Habilidad> listaHabilidades, List<Idioma> listaIdiomas, List<Red> listaRedes) {
+    public Persona(Long id, String nombre, String apellido, String especialidad1, String especialidad2, String sobreMi, String banner, String imagen, String telefono, String email, String password, String fechaNac, List<Domicilio> listaDomicilios, List<Experiencia> listaExperiencias, List<Educacion> listaEducacion, List<Proyecto> listaProyectos, List<Habilidad> listaHabilidades, List<Idioma> listaIdiomas, List<Red> listaRedes, Usuario username) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -119,23 +129,24 @@ public class Persona {
         this.password = password;
         this.fechaNac = fechaNac;
         //esto no está en el ejemplo y no sé si va
-        /*this.listaDomicilios = listaDomicilios;
+        this.listaDomicilios = listaDomicilios;
         this.listaExperiencias = listaExperiencias;
         this.listaEducacion = listaEducacion;
         this.listaProyectos = listaProyectos;
         this.listaHabilidades = listaHabilidades;
         this.listaIdiomas = listaIdiomas;
-        this.listaRedes = listaRedes;*/
+        this.listaRedes = listaRedes;
+        this.username = username;
         
         //en su lugar en el ejemplo figura esto, pero no estoy seguro si sigue siendo necesario si está lo anterior
         //acá lo q hace es declarar las claves foráneas como un ArrayList
-        listaDomicilios= new ArrayList();
+        /*listaDomicilios= new ArrayList();
         listaExperiencias= new ArrayList();
         listaEducacion= new ArrayList();
         listaProyectos= new ArrayList();
         listaHabilidades= new ArrayList();
         listaIdiomas= new ArrayList();
-        listaRedes= new ArrayList();
+        listaRedes= new ArrayList();*/
     }
         
 }

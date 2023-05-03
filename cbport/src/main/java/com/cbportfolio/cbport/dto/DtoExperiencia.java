@@ -14,7 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 public class DtoExperiencia {
     
-    private Long idExperiencia;
+    private Long id_experiencia;
     private String empresa;
     private String logo;
     private String url;
@@ -23,6 +23,6 @@ public class DtoExperiencia {
     private String inicio;
     private String fin;
     //private Persona pers;
-    private Long personaId; //esto no sé si va
+    private Long id_persona; //esto no sé si va
     
 }
