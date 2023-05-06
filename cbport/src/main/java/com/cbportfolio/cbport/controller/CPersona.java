@@ -28,10 +28,10 @@ public class CPersona {
     //inyección de dependencia de la controladora con el service
     
     
-    @PostMapping ("/login") //("/autenticacion/login")
+    /*@PostMapping ("/login") //("/autenticacion/login")
     public Persona loginPersona (@RequestBody Persona pers){
         return persoServ.loginPersona (pers.getEmail(), pers.getPassword());
-    }
+    }*/
     
     
     @GetMapping ("/lista")

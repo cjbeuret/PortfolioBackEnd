@@ -57,8 +57,8 @@ public class Persona {
     /*@Temporal(TemporalType.DATE)
     @JsonFormat (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date fecha_Nac;*/
-    @Basic
-    private String password;
+    /*@Basic
+    private String password;*/
     @Basic 
     private String fechaNac;
 
@@ -115,7 +115,7 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(Long id, String nombre, String apellido, String especialidad1, String especialidad2, String sobreMi, String banner, String imagen, String telefono, String email, String password, String fechaNac, List<Domicilio> listaDomicilios, List<Experiencia> listaExperiencias, List<Educacion> listaEducacion, List<Proyecto> listaProyectos, List<Habilidad> listaHabilidades, List<Idioma> listaIdiomas, List<Red> listaRedes, Usuario username) {
+    public Persona(Long id, String nombre, String apellido, String especialidad1, String especialidad2, String sobreMi, String banner, String imagen, String telefono, String email, /*String password,*/ String fechaNac, List<Domicilio> listaDomicilios, List<Experiencia> listaExperiencias, List<Educacion> listaEducacion, List<Proyecto> listaProyectos, List<Habilidad> listaHabilidades, List<Idioma> listaIdiomas, List<Red> listaRedes, Usuario username) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -126,7 +126,7 @@ public class Persona {
         this.imagen = imagen;
         this.telefono = telefono;
         this.email = email;
-        this.password = password;
+        //this.password = password;
         this.fechaNac = fechaNac;
         //esto no está en el ejemplo y no sé si va
         this.listaDomicilios = listaDomicilios;

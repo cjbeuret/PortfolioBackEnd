@@ -2,7 +2,6 @@
 package com.cbportfolio.cbport.controller;
 
 import com.cbportfolio.cbport.dto.DtoUsuario;
-import com.cbportfolio.cbport.entity.Usuario;
 import com.cbportfolio.cbport.service.IUsuarioService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +28,10 @@ public class CUsuario {
     //inyección de dependencia de la controladora con el service
     
     
-    @PostMapping ("/login") //("/autenticacion/login")
+    /*@PostMapping ("/login") //("/autenticacion/login")
     public Usuario loginUsuario (@RequestBody DtoUsuario usuario){
         return userServ.loginUsuario(usuario.getUsername(), usuario.getPassword());
-    }
+    }*/
     
     
     @GetMapping ("/lista")

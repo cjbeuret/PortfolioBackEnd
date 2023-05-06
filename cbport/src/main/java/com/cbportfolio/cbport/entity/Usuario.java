@@ -31,8 +31,8 @@ public class Usuario {
     @Basic
     private String username;
     
-    @Basic
-    private String email;
+    /*@Basic
+    private String email;*/
     
     @Basic
     private String password;

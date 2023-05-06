@@ -17,7 +17,7 @@ public class DtoUsuario {
     
     private Long id_usuario;
     private String username;
-    private String email;
+    //private String email;
     private String password;
     private Long id_persona;
 

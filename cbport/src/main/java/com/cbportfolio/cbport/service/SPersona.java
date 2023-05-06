@@ -18,7 +18,7 @@ public class SPersona implements IPersonaService{
     //inyecta la dependencia del repo con el q vamos a trabajar
     
     
-    @Override
+   /* @Override
     public Persona loginPersona(String email, String password) {
         List<Persona> listaPersonas = persoRepo.findByEmailAndPassword(email, password);
         if(!listaPersonas.isEmpty())
@@ -27,7 +27,7 @@ public class SPersona implements IPersonaService{
         }
         return null;
      
-    }
+    }*/
 
     
     @Override
@@ -92,7 +92,7 @@ public class SPersona implements IPersonaService{
                     .imagen(per.getImagen())
                     .telefono(per.getTelefono())
                     .email(per.getEmail())
-                    .password(per.getPassword())
+                    //.password(per.getPassword())
                     .fechaNac(per.getFechaNac())
                     .build();
             listaperdto.add(perdto); 
@@ -117,7 +117,7 @@ public class SPersona implements IPersonaService{
                 .imagen(perdtonew.getImagen())
                 .telefono(perdtonew.getTelefono())
                 .email(perdtonew.getEmail())
-                .password(perdtonew.getPassword())
+                //.password(perdtonew.getPassword())
                 .fechaNac(perdtonew.getFechaNac())
                 .build();
         this.create(pernew);
@@ -140,7 +140,7 @@ public class SPersona implements IPersonaService{
         permod.setImagen(perdto.getImagen());
         permod.setTelefono(perdto.getTelefono());
         permod.setEmail(perdto.getEmail());
-        permod.setPassword(perdto.getPassword());
+        //permod.setPassword(perdto.getPassword());
         permod.setFechaNac(perdto.getFechaNac());
                      
         // Lo cargo a BD
@@ -167,7 +167,7 @@ public class SPersona implements IPersonaService{
                      .imagen( persBuscada.getImagen())
                      .telefono( persBuscada.getTelefono())
                      .email( persBuscada.getEmail())
-                     .password( persBuscada.getPassword())
+                     //.password( persBuscada.getPassword())
                      .fechaNac( persBuscada.getFechaNac())
                   .build();
     

@@ -4,14 +4,13 @@ package com.cbportfolio.cbport.service;
 import com.cbportfolio.cbport.dto.DtoUsuario;
 import com.cbportfolio.cbport.entity.Usuario;
 import com.cbportfolio.cbport.repository.RUsuario;
-import jakarta.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-@Transactional
+
 public class SUsuario implements IUsuarioService{
     
     @Autowired
@@ -21,7 +20,7 @@ public class SUsuario implements IUsuarioService{
     @Autowired
     public SPersona persoServ;
     
-    @Override
+    /*@Override
     public Usuario loginUsuario(String username, String password) {
         List<Usuario> listaUsuarios = usuarioRepo.findByUsernameAndPassword(username, password);
         if(!listaUsuarios.isEmpty())
@@ -30,7 +29,7 @@ public class SUsuario implements IUsuarioService{
         }
         return null;
      
-    }
+    }*/
 
     @Override
     public List<Usuario> list() {
@@ -54,8 +53,8 @@ public class SUsuario implements IUsuarioService{
     } programa TK */
     
     @Override
-    public void create(Usuario usernew) {
-        usuarioRepo.save(usernew);
+    public void create(Usuario usuario) {
+        usuarioRepo.save(usuario);
     }
 
     @Override
@@ -64,8 +63,8 @@ public class SUsuario implements IUsuarioService{
     }
     
     @Override
-    public void edit(Usuario user) {
-        usuarioRepo.save(user);
+    public void edit(Usuario usuario) {
+        usuarioRepo.save(usuario);
     }
     
      //DTOs
@@ -73,75 +72,75 @@ public class SUsuario implements IUsuarioService{
     @Override
     public List<DtoUsuario> listDto(){
     // Lista Persona dsd DTO
-        List<DtoUsuario> listauserdto = new ArrayList<>();
+        List<DtoUsuario> listausuariosdto = new ArrayList<>();
         
         // Lista Experiencias dsd Entidad
-        List<Usuario> listausers= this.list();
+        List<Usuario> listausuarios= this.list();
         
         // Asigno valores de Entidad a DTO
-        for (Usuario user: listausers){
+        for (Usuario user: listausuarios){
             
-            DtoUsuario userdto =
+            DtoUsuario usuariosdto =
             
             DtoUsuario.builder()
                     .id_usuario(user.getId())
                     .username(user.getUsername())
-                    .email(user.getEmail())
+                    //.email(user.getEmail())
                     .password(user.getPassword())          
                     .id_persona(user.getPers().getId())
                     .build();
-            listauserdto.add(userdto); 
+            listausuariosdto.add(usuariosdto); 
         }
-    return listauserdto;
+    return listausuariosdto;
     }
 
           
     @Override
-    public void createDto(DtoUsuario userdtonew){
+    public void createDto(DtoUsuario usuariodtonew){
     
-        Usuario usernew=
+        Usuario usuarionew=
                 
         Usuario.builder()
-                //.id(userdtonew.getId_usuario())               
-                .username(userdtonew.getUsername())               
-                .email(userdtonew.getEmail())
-                .password(userdtonew.getPassword())
-                .pers(persoServ.getById(userdtonew.getId_persona()))                
+                .id(usuariodtonew.getId_usuario())               
+                .username(usuariodtonew.getUsername())               
+                //.email(usuariodtonew.getEmail())
+                .password(usuariodtonew.getPassword())
+                .pers(persoServ.getById(usuariodtonew.getId_persona()))                
                 .build();
-        this.create(usernew);
+        this.create(usuarionew);
     }
     
     
     @Override
-    public void editDto(DtoUsuario userdto){
+    public void editDto(DtoUsuario usuariodto){
     
         //Busco la experiencia y la guardo en un objeto
-        Usuario usermod=this.getById(userdto.getId_usuario());               
+        Usuario usuariomod=this.getById(usuariodto.getId_usuario());               
         //Cargo los datos desde el DTO
-        usermod.setUsername(userdto.getUsername());        
-        usermod.setEmail(userdto.getEmail());
-        usermod.setPassword(userdto.getPassword());              
+        usuariomod.setUsername(usuariodto.getUsername());        
+        //usuariomod.setEmail(usuariodto.getEmail());
+        usuariomod.setPassword(usuariodto.getPassword());              
         // Lo cargo a BD
-        this.edit(usermod);
+        this.edit(usuariomod);
     }
     
     @Override
     public DtoUsuario getByIdDto(Long id){
     
     //Busco la experiencia y la guardo en un objeto
-        Usuario userBuscado=this.getById(id);
+        Usuario usuariobuscado=this.getById(id);
         
      // Mapeo la experiencia a DtoExperiencia
-        DtoUsuario userBuscadoDTO =
+        DtoUsuario usuarioBuscadoDTO =
              
              DtoUsuario.builder()
-                     .id_usuario(userBuscado.getId())
-                     .username( userBuscado.getUsername())                     
-                     .email( userBuscado.getEmail())
-                     .password( userBuscado.getPassword())                     
+                     .id_usuario(usuariobuscado.getId())
+                     .username( usuariobuscado.getUsername())                     
+                     //.email( usuariobuscado.getEmail())
+                     .password( usuariobuscado.getPassword())                     
                   .build();
     
-             return userBuscadoDTO;   
+             return usuarioBuscadoDTO;   
      
     }
             

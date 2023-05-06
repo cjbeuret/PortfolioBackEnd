@@ -24,7 +24,7 @@ public class DtoPersona {
     private String imagen;
     private String telefono;
     private String email;
-    private String password;
+    //private String password;
     private String fechaNac;
  
 }
