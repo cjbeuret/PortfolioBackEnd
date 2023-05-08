@@ -35,23 +35,23 @@ public class CProyecto {
     
     
     @PostMapping ("/alta")
-    public String create (@RequestBody DtoProyecto proyecto){
+    public void create (@RequestBody DtoProyecto proyecto){
         //listaProyecto.add(proy);
         proyServ.createDto(proyecto);
-        return "El proyecto fue creado correctamente";
+        //return "El proyecto fue creado correctamente";
     }
     
     @DeleteMapping ("/baja/{id}")
-    public String delete(@PathVariable Long id){
+    public void delete(@PathVariable Long id){
         proyServ.deleteDto(id);
-        return "El proyecto fue borrado correctamente";
+        //return "El proyecto fue borrado correctamente";
     }
     
     @PutMapping ("/edicion")
-    public String edit (@RequestBody DtoProyecto proyecto){
+    public void edit (@RequestBody DtoProyecto proyecto){
         //listaProyectos.add(proy);
         proyServ.editDto(proyecto);
-        return "Los datos del proyecto se modificaron correctamente";
+        //return "Los datos del proyecto se modificaron correctamente";
     }
     
     /*@PutMapping ("/edicion/{id}")

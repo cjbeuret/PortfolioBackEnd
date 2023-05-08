@@ -44,10 +44,10 @@ public class CPersona {
     
     
     @PostMapping ("/alta")
-    public String create (@RequestBody DtoPersona persona){
+    public void create (@RequestBody DtoPersona persona){
         //listaPersonas.add(pers);
         persoServ.createDto(persona);
-        return "La persona fue creada correctamente";
+        //return "La persona fue creada correctamente";
     }
     /*
     @PostMapping ("/alta")
@@ -59,17 +59,17 @@ public class CPersona {
     */
     
     @DeleteMapping ("/baja/{id}")
-    public String delete(@PathVariable Long id){
+    public void delete(@PathVariable Long id){
         persoServ.deleteDto(id);
-        return "La persona fue borrada correctamente";
+        //return "La persona fue borrada correctamente";
     }
     
     
     @PutMapping ("/edicion")
-    public String edit (@RequestBody DtoPersona persona){
+    public void edit (@RequestBody DtoPersona persona){
         //listaPersonas.add(pers);
         persoServ.editDto(persona);
-        return "Los datos de la persona se modificaron correctamente";
+        //return "Los datos de la persona se modificaron correctamente";
     }
     
     /*@PutMapping ("/edicion/{id}")

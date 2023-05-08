@@ -33,23 +33,23 @@ public class CHabilidad {
     }   
     
     @PostMapping ("/alta")
-    public String create (@RequestBody DtoHabilidad habilidad){
+    public void create (@RequestBody DtoHabilidad habilidad){
         //listaHabilidades.add(hab);
         habServ.createDto(habilidad);
-        return "La habilidad fue creada correctamente";
+        //return "La habilidad fue creada correctamente";
     }
     
     @DeleteMapping ("/baja/{id}")
-    public String delete(@PathVariable Long id){
+    public void delete(@PathVariable Long id){
         habServ.deleteDto(id);
-        return "La habilidad fue borrada correctamente";
+        //return "La habilidad fue borrada correctamente";
     }
     
     @PutMapping ("/edicion")
-    public String edit(@RequestBody DtoHabilidad habilidad){
+    public void edit(@RequestBody DtoHabilidad habilidad){
         //listaHabilidades.add(hab);
         habServ.editDto(habilidad);
-        return "Los datos de la habilidad se modificaron correctamente";
+        //return "Los datos de la habilidad se modificaron correctamente";
     }
     
     /*@PutMapping ("/edicion/{id}")

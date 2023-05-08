@@ -34,24 +34,24 @@ public class CEducacion {
     }
     
     @PostMapping ("/alta")
-    public String create (@RequestBody DtoEducacion educacion){
+    public void create (@RequestBody DtoEducacion educacion){
         //listaPersonas.add(pers);
         educServ.createDto(educacion);
-        return "La educacion fue creada correctamente";
+       // return "La educacion fue creada correctamente";
     }
     
     
     @DeleteMapping ("/baja/{id}")
-    public String delete(@PathVariable Long id){
+    public void delete(@PathVariable Long id){
         educServ.deleteDto(id);
-        return "La educacion fue borrada correctamente";
+        //return "La educacion fue borrada correctamente";
     }
     
     @PutMapping ("/edicion")
-    public String edit (@RequestBody DtoEducacion educacion){
+    public void edit (@RequestBody DtoEducacion educacion){
         //listaPersonas.add(pers);
         educServ.editDto(educacion);
-        return "Los datos de la educacion se modificaron correctamente";
+        //return "Los datos de la educacion se modificaron correctamente";
     }
     
     /*@PutMapping ("/edicion/{id}")

@@ -33,23 +33,23 @@ public class CExperiencia {
     }
        
     @PostMapping ("/alta")
-    public String create(@RequestBody DtoExperiencia experiencia){
+    public void create(@RequestBody DtoExperiencia experiencia){
         //listaExperiencias.add(expe);
         expeServ.createDto(experiencia);
-        return "La experiencia fue creada correctamente";
+        //return "La experiencia fue creada correctamente";
     }
     
     @DeleteMapping ("/baja/{id}")
-    public String delete(@PathVariable Long id){
+    public void delete(@PathVariable Long id){
         expeServ.deleteDto(id);
-        return "La experiencia fue borrada correctamente";
+        //return "La experiencia fue borrada correctamente";
     }
     
     @PutMapping ("/edicion")
-    public String edit(@RequestBody DtoExperiencia experiencia){
+    public void edit(@RequestBody DtoExperiencia experiencia){
         //listaExperiencias.add(expe);
         expeServ.editDto(experiencia);
-        return "Los datos de la experiencia se modificaron correctamente";
+        //return "Los datos de la experiencia se modificaron correctamente";
     }
     
      // este sería editar por id, pero no lo tenemos en el servicio ni su interfase, tampoco en FRONTEND

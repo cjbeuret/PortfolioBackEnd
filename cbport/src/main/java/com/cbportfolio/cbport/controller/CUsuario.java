@@ -59,9 +59,9 @@ public class CUsuario {
     */
     
     @DeleteMapping ("/baja/{id}")
-    public String delete(@PathVariable Long id){
+    public void delete(@PathVariable Long id){
         userServ.deleteDto(id);
-        return "El usuario fue borrado correctamente";
+        //return "El usuario fue borrado correctamente";
     }
     
     

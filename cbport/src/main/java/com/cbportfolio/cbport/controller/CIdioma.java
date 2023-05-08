@@ -33,23 +33,23 @@ public class CIdioma {
     }
     
     @PostMapping ("/alta")
-    public String create (@RequestBody DtoIdioma idioma){
+    public void create (@RequestBody DtoIdioma idioma){
         //listaIdiomas.add(idiom);
         idiomaServ.createDto(idioma);
-        return "El idioma fue creado correctamente";
+        //return "El idioma fue creado correctamente";
     }
     
     @DeleteMapping ("/baja/{id}")
-    public String delete(@PathVariable Long id){
+    public void delete(@PathVariable Long id){
         idiomaServ.deleteDto(id);
-        return "El idioma fue borrado correctamente";
+        //return "El idioma fue borrado correctamente";
     }
     
     @PutMapping ("/edicion")
-    public String edit (@RequestBody DtoIdioma idioma){
+    public void edit (@RequestBody DtoIdioma idioma){
         //listaIdiomas.add(idiom);
         idiomaServ.editDto(idioma);
-        return "Los datos del idioma se modificaron correctamente";
+        //return "Los datos del idioma se modificaron correctamente";
     }
     
     /*@PutMapping ("/edicion/{id}")

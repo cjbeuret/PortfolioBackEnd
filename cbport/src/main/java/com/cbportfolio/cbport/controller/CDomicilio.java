@@ -35,24 +35,24 @@ public class CDomicilio {
     }
     
     @PostMapping ("/alta")
-    public String create (@RequestBody DtoDomicilio domicilio){
+    public void create (@RequestBody DtoDomicilio domicilio){
         //listaDomicilios.add(domic);
         domicServ.createDto(domicilio);
-        return "El domicilio fue creado correctamente";
+        //return "El domicilio fue creado correctamente";
     }
     
     
     @DeleteMapping ("/baja/{id}")
-    public String delete(@PathVariable Long id){
+    public void delete(@PathVariable Long id){
         domicServ.deleteDto(id);
-        return "El domicilio fue borrado correctamente";
+        //return "El domicilio fue borrado correctamente";
     }
     
     @PutMapping ("/edicion")
-    public String edit (@RequestBody DtoDomicilio domicilio){
+    public void edit (@RequestBody DtoDomicilio domicilio){
         //listaDomicilio.add(domic);
         domicServ.editDto(domicilio);
-        return "Los datos del domicilio se modificaron correctamente";
+        //return "Los datos del domicilio se modificaron correctamente";
     }
         
     /*@PutMapping ("/edicion/{id}")

@@ -41,9 +41,9 @@ public class CRed {
     }
     
     @DeleteMapping ("/baja/{id}")
-    public String delete(@PathVariable Long id){
+    public void delete(@PathVariable Long id){
         redServ.deleteDto(id);
-        return "La red fue borrada correctamente";
+        //return "La red fue borrada correctamente";
     }
     
     @PutMapping ("/edicion")
